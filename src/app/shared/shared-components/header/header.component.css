@@ -1,0 +1,51 @@
+:host {
+  display: block;
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: #4770FF;
+  padding: 15px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#logo {
+  width: 100px; /* ajusta el ancho según tus necesidades */
+}
+
+.logo_header {
+  width: 100%;
+  height: auto;
+}
+
+#search {
+  display: flex;
+  align-items: center;
+  /* background-color: #CA0000; */
+}
+#lupa{
+  background-color: #CA0000;
+  border: none;
+  padding: 0px;
+}
+#search input {
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+}
+
+nav {
+  text-align: center;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 15px;
+}
