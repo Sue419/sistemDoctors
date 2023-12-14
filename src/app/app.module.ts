@@ -32,6 +32,7 @@ import { LoginComponent } from './views/login/login.component';
 import { RouterModule } from '@angular/router';
 import { sharedModule } from './shared/shadedModule';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { DashboardComponent } from './views/dashboard/dashboard.component';
     MatDatepickerModule,
     // MatNativeDateModule,
     // ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

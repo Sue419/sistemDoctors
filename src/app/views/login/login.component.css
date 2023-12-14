@@ -1,238 +1,86 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:wght@400;500&display=swap');
 
-* {
-    box-sizing: border-box;
-    padding: 0;
-    /* margin: 0px; */
+.login-view {
+    margin: auto;
+    /* padding: 0; */
+    /* background-color: #F72C25; */
+    background-image: url(../../../assets/fondos/telemedicine.jpeg);
+    background-position: center;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    min-height: 100vh;
 }
-
-.container {
-    background-color: #ccc;
-    width: 100vw;;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    gap: 7rem;
-}
-
 .container-logo {
     display: flex;
-    position: relative;
+    flex-wrap: wrap;
     flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-}
-
-.container-logo__img {
-    width: 14%;
-
-}
-
-.container-logo__text {
-    width: 30%;
-}
-
-.container-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-}
-
-.login-google {
-    width: 20rem;
-    height: 3rem;
-    display: flex;
-    flex-direction: row;
     justify-content: space-around;
+    align-content: center;
 }
 
-.input-button {
-    border-radius: 8px;
-    font-size: 2rem;
-    width: 20rem;
-    height: 3rem;
+.imgLogin {
+    /* display: block; */
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 8%;
+    width: 300px;
 }
 
-.login-google-button {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
+.container-login {
+    margin-right: auto;
+    margin-left: auto;
+    /* margin-top: 5%; */
+    /* margin-block-end: 12%; */
+    /* background-color: blueviolet; */
+    width: 500px;
+    height: 400px;
+    /* margin-left: 140px; */
+    font-size: 30px;
+}
+
+.form-login {
+    /* background-color: blue; */
     display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100%;
-    overflow: hidden;
-    padding: 10px;
-    color: #ffffff;
-    font-size: 16px;
-    background: none;
-    border: 1px solid #14EDBA;
-}
-
-.login-google__button:hover {
-    border: 2px solid #0BDB90;
-}
-
-.login-google-button__img {
-    width: 20%;
-    height: 100%;
-}
-
-.login-google__button--medium-roboto {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-}
-
-.container-o {
-    display: flex;
-}
-
-.container-o__img {
-    align-items: center;
-}
-
-.login-email {
-    display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
-    gap: 0.5rem;
+    justify-content: space-around;
+    align-content: center;
+    color:var(--color-2);
 }
 
-.login-email__input {
-    font-family: 'Roboto', sans-serif;
-    display: flex;
-    font-size: 1rem;
-    padding: 13px 12px 13px 16px;
-    align-items: center;
-    margin-bottom: 5px;
-    outline: none;
-    border: none;
+.inputS {
+    width: 90%;
+    height: 50px;
+    padding-left: 4%;
+    border: 2px solid var(--color-2);
+    border-radius: 5px;
+    margin-block-start: 1%;
+    margin-block-end: 8%;
+    font-size: 20px;
+    /* opacity: 1; */
 }
 
-.login-email-button {
+.containerBtn {
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+}
+
+.btnLogin {
+    background-color: var(--color-3);
+    letter-spacing: 1.5px;
+    width: 40%;
+    height: 50px;
+    padding: 2.2%;
+    margin-top: 5%;
+    border-radius: 8px;
+    color: var(--color-2);
+    font-size: 25px;
+    font-style: italic;
     justify-content: center;
-    align-items: center;
-    gap: 5px;
-    background-color: #0BDB90;
-    overflow: hidden;
-    padding: 10px;
-    color: #222222;
-    font-size: 16px;
-    font-weight: 700;
-    border: none;
+    /* align-self: center; */
 }
 
-.login-email__button--poppins {
-    font-family: 'Poppins', sans-serif;
-}
-
-
-
-.error__message {
-    color: #fcd681;
-    font-weight: 400;
-    margin: 5px;
-    padding: 10px;
-    font-size: 14px;
-}
-
-@media screen and (min-width: 639px) {
-
-    .container {
-        gap: 8rem;
-    }
-
-    .container-logo__img {
-        width: 8%;
-
-    }
-
-    .container-logo__text {
-        width: 15%;
-    }
-
-}
-
-@media screen and (min-width: 1023px) {
-
-    .container {
-        flex-direction: row;
-        flex-wrap: nowrap;
-        align-items: center;
-        gap: 0rem;
-    }
-
-    .container-logo {
-        width: 50vw;
-        gap: 2rem;
-    }
-
-    .container-login {
-        display: flex;
-        align-items: center;
-        /* flex-direction: column; */
-        height: 100%;
-        width: 50vw;
-    }
-
-    .container-logo__img {
-        width: 25%;
-    }
-
-    .container-logo__text {
-        width: 45%;
-    }
-
-
-
-    .container-form {
-        align-items: center;
-        padding: 5rem;
-        border-radius: 8px;
-        background-color: #5f5f65;
-    }
-
-    .container-form::before {
-        font-family: 'Roboto', sans-serif;
-        font-weight: 500;
-        font-size: 1.3rem;
-        margin-bottom: 1.2rem;
-        color: #A8A8B3;
-
-        content: "Ingresa con tu cuenta favorita";
-    }
-
-
-}
-
-@media screen and (min-width: 1439px) {
-
-    .container {
-
-        justify-content: space-evenly;
-    }
-
-    .container-logo {
-        width: 60vw;
-        gap: 3rem;
-    }
-
-    .container-login {
-        width: 40vw;
-    }
-
-
-    .container-logo__img {
-        width: 20%;
-        margin-top: 25px;
-    }
-
-    .container-logo__text {
-        width: 45%;
-    }
-
-
-
+.error-message {
+    color: var(--color-1);;
 }
