@@ -35,7 +35,6 @@ export class LoginComponent {
     //   })
     // }
     onSubmit(){
-      console.log('value')
       this.router.navigateByUrl('/dashboard');
     }
   }
