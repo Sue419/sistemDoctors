@@ -39,6 +39,7 @@ import { DatosPacienteComponent } from './views/dashboard/datosPaciente/datos-pa
 import { PacientesComponent } from './views/dashboard/Pacientes/pacientes/pacientes.component';
 import { NuevoHistorialComponent } from './views/dashboard/NuevoHistorial/nuevo-historial/nuevo-historial.component';
 import { HistorialComponent } from './views/dashboard/Historial/historial/historial.component';
+import { DoctoresComponent } from './views/dashboard/doctores/doctores.component';
 
 
 
@@ -54,6 +55,7 @@ import { HistorialComponent } from './views/dashboard/Historial/historial/histor
     PacientesComponent,
     NuevoHistorialComponent,
     HistorialComponent,
+    DoctoresComponent,
   ],
   imports: [
     sharedModule,
