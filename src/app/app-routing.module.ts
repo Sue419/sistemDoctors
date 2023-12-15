@@ -1,9 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import HomeAdminComponent from './views/home-admin/home-admin.component';
+
 import { LoginComponent } from './views/login/login.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
+import { PacientesComponent } from './views/dashboard/Pacientes/pacientes/pacientes.component';
+import { CreaPacienteComponent } from './views/dashboard/creaPaciente/crea-paciente/crea-paciente.component';
+import { NuevoHistorialComponent } from './views/dashboard/NuevoHistorial/nuevo-historial/nuevo-historial.component';
+import { HistorialComponent } from './views/dashboard/Historial/historial/historial.component';
+import HomeAdminComponent from './views/home-admin/home-admin.component';
 
 const routes: Routes = [
 
@@ -14,26 +19,44 @@ const routes: Routes = [
   },
   {
     path: 'login' ,//TODO: http://localhost:4200/ <--- /login
-    component:LoginComponent,
+    component: LoginComponent,
   },
   {
     path: 'home' ,//TODO: http://localhost:4200/ <--- /home
     component: HomeAdminComponent
   },
   // {
+  //   path: '**' ,//TODO: cualquier ruta redirijirá al home
+  //   redirectTo: 'home' , pathMatch: 'full'
+  // },
+  // {
   //   path: 'dashboard' ,//TODO: http://localhost:4200/ <--- /home
   //   loadChildren: ()=> import(`./modules/dashboard/dashboard.module`).then(m => m.DashboardModule)
   // },
   {
     path: 'dashboard' ,//TODO: http://localhost:4200/ <--- /home
-    component: DashboardComponent
-  },
-  {
-    path: '**' ,//TODO: cualquier ruta redirijirá al home
-    redirectTo: 'home' , pathMatch: 'full'
+    component: DashboardComponent,
+    children:[
+      {
+        path: 'Pacientes' ,
+        component: PacientesComponent,
+      },
+      {
+        path: 'crear-paciente' ,
+        component: CreaPacienteComponent,
+      },
+      {
+        path: 'nuevo-historial' ,
+        component: NuevoHistorialComponent,
+      },
+      {
+        path: 'historial' ,
+        component: HistorialComponent,
+      }
+    ]
   }
 
-];
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

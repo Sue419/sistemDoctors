@@ -33,6 +33,13 @@ import { RouterModule } from '@angular/router';
 import { sharedModule } from './shared/shadedModule';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
+import { SideNavComponent } from './views/dashboard/side-nav/side-nav.component';
+import { CreaPacienteComponent } from './views/dashboard/creaPaciente/crea-paciente/crea-paciente.component';
+import { DatosPacienteComponent } from './views/dashboard/datosPaciente/datos-paciente/datos-paciente.component';
+import { PacientesComponent } from './views/dashboard/Pacientes/pacientes/pacientes.component';
+import { NuevoHistorialComponent } from './views/dashboard/NuevoHistorial/nuevo-historial/nuevo-historial.component';
+import { HistorialComponent } from './views/dashboard/Historial/historial/historial.component';
+
 
 
 @NgModule({
@@ -41,6 +48,12 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     HomeAdminComponent,
     DashboardComponent,
+    SideNavComponent,
+    CreaPacienteComponent,
+    DatosPacienteComponent,
+    PacientesComponent,
+    NuevoHistorialComponent,
+    HistorialComponent,
   ],
   imports: [
     sharedModule,
@@ -73,6 +86,7 @@ import { FormsModule } from '@angular/forms';
     // MatNativeDateModule,
     // ReactiveFormsModule,
     FormsModule,
+   
   ],
   providers: [],
   bootstrap: [AppComponent],
