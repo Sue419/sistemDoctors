@@ -1,52 +1,64 @@
 
+<div class="container">
 
-<mat-sidenav-container class="sidebarDashboard">
-  <!-- <mat-sidenav> -->
-    <mat-nav-list>
+  <div class="container__sidebar">
+<!-- <mat-sidenav> -->
+  <mat-nav-list>
 
-      <div class="navbar__logo">
-        <img class="sidebar__logo--img" src="../../../../assets/users/2.jpg" alt="imagen de usuario">
-      </div>
-  
-      <a mat-list-item routerLink="/login">
-        <mat-icon >medication</mat-icon>
-        <span>Doctores</span>
-      </a>
-  
-      <a mat-list-item routerLink="/dashboard/Pacientes">
-        <mat-icon>account_circle</mat-icon>
-        <span>Pacientes</span>
-      </a>
-  
-      <a mat-list-item routerLink="/dashboard/datos-paciente">
-        <mat-icon>personal_injury</mat-icon>
-        <span>Datos del Paciente</span>
-      </a>
-  
-      <a mat-list-item routerLink="/dashboard/crear-paciente">
-        <mat-icon>person_add</mat-icon>
-        <span>Crear Paciente</span>
-      </a>
-  
-      <a mat-list-item routerLink="/dashboard/nuevo-historial">
-        <mat-icon>library_add</mat-icon>
-        <span>Nuevo Historial</span>
-      </a>
-  
-      <a mat-list-item routerLink="/dashboard/historial">
-        <mat-icon>library_books</mat-icon>
-        <span>Historial</span>
-      </a>
-  
-      <a mat-list-item routerLink="/home">
-        <mat-icon>logout</mat-icon>
-        <span>Salir</span>
-      </a>
+    <div class="navbar__logo">
+      <img class="sidebar__logo--img" src="../../../../assets/users/2.jpg" alt="imagen de usuario">
+    </div>
 
-    </mat-nav-list>
-  
-  <!-- </mat-sidenav> -->
+    <a mat-list-item routerLink="/dashboard/doctores">
+      <mat-icon >medication</mat-icon>
+      <span>Doctores</span>
+    </a>
 
-</mat-sidenav-container>
+    <a mat-list-item routerLink="/dashboard/pacientes">
+      <mat-icon>account_circle</mat-icon>
+      <span>Pacientes</span>
+    </a>
+
+    <a mat-list-item routerLink="/dashboard/datos-del-paciente">
+      <mat-icon>personal_injury</mat-icon>
+      <span>Datos del Paciente</span>
+    </a>
+
+    <a mat-list-item routerLink="/dashboard/crear-paciente">
+      <mat-icon>person_add</mat-icon>
+      <span>Crear Paciente</span>
+    </a>
+
+    <a mat-list-item routerLink="/dashboard/nuevo-historial">
+      <mat-icon>library_add</mat-icon>
+      <span>Nuevo Historial</span>
+    </a>
+
+    <a mat-list-item routerLink="/dashboard/historial">
+      <mat-icon>library_books</mat-icon>
+      <span>Historial</span>
+    </a>
+
+    <a mat-list-item routerLink="/home">
+      <mat-icon>logout</mat-icon>
+      <span>Salir</span>
+    </a>
+
+  </mat-nav-list>
+
+<!-- </mat-sidenav> -->
+
+  </div>
+
+  <div class="container__content">
+    <h1>Hola
+      <router-outlet> </router-outlet>
+
+    </h1>
+  </div>
+
+</div>
+
+  
 
     

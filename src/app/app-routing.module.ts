@@ -9,6 +9,8 @@ import { CreaPacienteComponent } from './views/dashboard/creaPaciente/crea-pacie
 import { NuevoHistorialComponent } from './views/dashboard/NuevoHistorial/nuevo-historial/nuevo-historial.component';
 import { HistorialComponent } from './views/dashboard/Historial/historial/historial.component';
 import HomeAdminComponent from './views/home-admin/home-admin.component';
+import { DoctoresComponent } from './views/dashboard/doctores/doctores.component';
+import { DatosPacienteComponent } from './views/dashboard/datosPaciente/datos-paciente/datos-paciente.component';
 
 const routes: Routes = [
 
@@ -38,21 +40,31 @@ const routes: Routes = [
     component: DashboardComponent,
     children:[
       {
-        path: 'Pacientes' ,
+        path:'doctores' ,
+        component: DoctoresComponent,
+      },
+      {
+        path:'pacientes' ,
         component: PacientesComponent,
       },
       {
-        path: 'crear-paciente' ,
+        path:'datos-del-paciente' ,
+        component: DatosPacienteComponent,
+      },
+      {
+        path:'crear-paciente' ,
         component: CreaPacienteComponent,
       },
       {
-        path: 'nuevo-historial' ,
+        path:'nuevo-historial' ,
         component: NuevoHistorialComponent,
       },
       {
-        path: 'historial' ,
+        path:'historial' ,
         component: HistorialComponent,
-      }
+      
+      },
+
     ]
   }
 
