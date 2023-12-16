@@ -27,16 +27,15 @@
       <mat-icon>menu</mat-icon>
     </button>
 
-    <a mat-button [matMenuTriggerFor]="dropdown">
-      VISTAS
-    </a>
+    <span>My App</span>
+    
     <mat-menu #dropdown>
 
       <button mat-menu-item routerLink="">Courses</button>
       <button mat-menu-item routerLink="">About</button>
 
     </mat-menu>
-
+    <span class="example-spacer"></span>
     <a mat-button routerLink="home">
       <!-- <mat-icon>person_add</mat-icon>
       Registrar Pasiente -->

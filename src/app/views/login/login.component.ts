@@ -14,6 +14,7 @@ export class LoginComponent {
   public email: string = '';
   public emailError: string = '';
   password: string = '';
+  public passwordError: string = '';
 
   constructor(private router: Router , public loginService: LoginService) {}
 
