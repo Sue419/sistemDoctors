@@ -1,0 +1,7 @@
+mat-form-field {
+    margin-bottom: 16px;
+    margin-right:  10 px; /* Agrega espacio entre los formularios */
+  }
+  mat-radio-button{
+    margin-right: 5px;
+  }

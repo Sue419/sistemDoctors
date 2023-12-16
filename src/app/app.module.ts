@@ -23,7 +23,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSliderModule } from '@angular/material/slider';
-
+import { ReactiveFormsModule } from '@angular/forms';
+// import { CdkTextareaAutosizeModule } from '@angular/cdk/text-field';
 
 import HomeAdminComponent from './views/home-admin/home-admin.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -40,7 +41,7 @@ import { PacientesComponent } from './views/dashboard/Pacientes/pacientes/pacien
 import { NuevoHistorialComponent } from './views/dashboard/NuevoHistorial/nuevo-historial/nuevo-historial.component';
 import { HistorialComponent } from './views/dashboard/Historial/historial/historial.component';
 import { DoctoresComponent } from './views/dashboard/doctores/doctores.component';
-
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -85,9 +86,10 @@ import { DoctoresComponent } from './views/dashboard/doctores/doctores.component
     MatRadioModule,
     MatSliderModule,
     MatDatepickerModule,
-    // MatNativeDateModule,
-    // ReactiveFormsModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
     FormsModule,
+    // CdkTextareaAutosizeModule,
    
   ],
   providers: [],
