@@ -15,8 +15,10 @@
   align-items: center;
 }
 .sidebar__logo--img {
-  margin: 8px;
-  width: 50PX;
+  margin: 15px;
+  width: 101px;
+  margin-left: 130px;
+
 }
 
 .nav-list__icons {

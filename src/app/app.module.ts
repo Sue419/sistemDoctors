@@ -24,7 +24,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSliderModule } from '@angular/material/slider';
 import { ReactiveFormsModule } from '@angular/forms';
-// import { CdkTextareaAutosizeModule } from '@angular/cdk/text-field';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 import HomeAdminComponent from './views/home-admin/home-admin.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -89,7 +90,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatNativeDateModule,
     ReactiveFormsModule,
     FormsModule,
-    // CdkTextareaAutosizeModule,
+    MatGridListModule,
+    MatFormFieldModule,
+   
    
   ],
   providers: [],
