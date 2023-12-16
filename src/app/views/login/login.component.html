@@ -4,20 +4,36 @@
         <img class="imgLogin" src="../../../assets/logos/snake-removebg-preview.png" alt="logo snake ">
     </div>
     <div class="container-login">
+
         <form class="form-login" (ngSubmit)="onSubmit()">
-            <label for="email">Email:</label>
-            <input class="inputS" type="email" id="mail" [(ngModel)]="email" name="user_mail"
-                title="El email es incorrecto" placeholder="ejemplo@ejemplo.com" required autocomplete="username">
-            <!-- <div *ngIf="errorMessageEmail" class="error-message-email">{{errorMessageEmail}}</div> -->
-            <label for="password">Password:</label>
-            <input class="inputS" type="password" [(ngModel)]="password" id="password" name="user_password"
-                placeholder="**********"  required autocomplete="current-password">
-            <!-- <div *ngIf="errorMessagePassword" class="error-message-password">{{errorMessagePassword}}</div> -->
+
+            <mat-form-field class="form-field" floatLabel="auto" hintLabel="">
+                <mat-label for="email">Email</mat-label>
+                <input  required autocomplete="username"  matInput #input maxlength="60" placeholder="ejemplo@ejemplo.com" cellspacing="5" class="inputS" type="email" id="mail" [(ngModel)]="email" name="user_mail">
+                <div *ngIf="emailError" class="error-message-email">{{emailError}}</div>
+            </mat-form-field>
+
+            <mat-form-field class="form-field" floatLabel="auto" hintLabel="">
+
+                <mat-label for="password">Password</mat-label>
+                <input matInput #input maxlength=""  cellspacing="5"  type="email" id="mail" [(ngModel)]="email" name="user_password" class="inputS" type="password" [(ngModel)]="password" id="password" name="user_password"
+                placeholder="**********"  required autocomplete="current-password" >
+               <div *ngIf="passwordError" class="error-message-password">{{passwordError}}</div>
+           
+            </mat-form-field>
+
+
+
+        
+          
+          
             <div class="containerBtn">
-                <p *ngIf="emailError" class="error-message">{{ emailError }}</p>
-                <button class="btnLogin" type="submit">Login</button>
+                <button mat-raised-button color="primary" class="btnLogin" type="submit">Login</button>
             </div>
+
+
         </form>
+
     </div>
 </div>
 
