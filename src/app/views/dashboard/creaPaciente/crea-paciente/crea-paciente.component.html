@@ -1,1 +1,295 @@
-<p>crea-paciente works!</p>
+
+<div [formGroup]="form" class="crea-paciente-details-form">
+<!-- input nombre del paciente -->
+ <mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="Nombre Paciente" formControlName="paciente" type="text">
+  <mat-error *ngIf="nombrePaciente.hasError('required')">El nombre es obligatorio</mat-error>
+  <mat-error *ngIf="nombrePaciente.hasError('minlength')">El nombre debe tener al menos 5 caracteres</mat-error>
+  <mat-error *ngIf="nombrePaciente.hasError('maxlength')">El nombre no debe exceder los 60 caracteres</mat-error>
+
+  <mat-hint align="end">
+{{nombrePaciente.value?.length}} /60
+</mat-hint>
+
+ </mat-form-field>
+
+ <!-- input edad del paciente -->
+ <mat-form-field class="form-field" floatLabel="auto" align=" end">
+    <input matInput placeholder="Edad del Paciente" formControlName="paciente" type="text">
+  <mat-error *ngIf="nombrePaciente.hasError('required')">Ingresar la edad es obligatorio</mat-error>
+
+
+ </mat-form-field>
+
+ <!-- fecha -->
+<mat-form-field appearance="outline">
+
+<input matInput formControlName="appointment" placeholder="Fecha de Atención" [matDatepicker]="appointmentDate">
+    <mat-datepicker-toggle matSuffix [for]="appointmentDate">
+
+    </mat-datepicker-toggle>
+
+    <mat-datepicker #appointmentDate>
+
+    </mat-datepicker>
+
+
+
+</mat-form-field>
+
+<!-- O/S -->
+<mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="O/S" formControlName="OS" type="text">
+ </mat-form-field>
+
+<!-- Diag -->
+<mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="Diagnóstico" formControlName="diag" type="text">
+ </mat-form-field>
+
+<!-- DNI -->
+<mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="DNI" formControlName="DNI" type="text">
+ </mat-form-field>
+
+<!-- Domicilio -->
+<mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="Domicilio" formControlName="Domicilio" type="text">
+ </mat-form-field>
+
+<!-- Telefono -->
+<mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="Telefono" formControlName="Tel" type="text">
+ </mat-form-field>
+
+<!-- FNac -->
+<mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="Fecha de Nacimiento" formControlName="FNac" type="text">
+ </mat-form-field>
+
+<!-- Hijos -->
+<mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="Hijos" formControlName="Hijos" type="text">
+ </mat-form-field>
+
+<!-- cel -->
+<mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="Cel" formControlName="Cel" type="text">
+ </mat-form-field>
+
+<!-- Gpo -->
+<mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="GPO" formControlName="Gpo" type="text">
+ </mat-form-field>
+
+<!-- EC -->
+<mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="EC" formControlName="EC" type="text">
+ </mat-form-field>
+
+<!-- Consulta -->
+<mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="Consulta" formControlName="Consulta" type="text">
+ </mat-form-field>
+
+
+<!-- Alergias -->
+<mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="Alergias" formControlName="alergias" type="text">
+ </mat-form-field>
+
+<!-- MEN -->
+<mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="MEN" formControlName="MEN" type="text">
+ </mat-form-field>
+
+<!-- SÑO -->
+<mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="SÑO" formControlName="SÑO" type="text">
+ </mat-form-field>
+
+<!-- Cirugias -->
+<mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="Cirugias" formControlName="Cirugias" type="text">
+ </mat-form-field>
+
+<!-- CPO -->
+<mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="CPO" formControlName="CPO" type="text">
+ </mat-form-field>
+
+<!-- NOC -->
+<mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="NOC" formControlName="NOC" type="text">
+ </mat-form-field>
+
+
+<!-- Ant Fam -->
+<mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="AntFam" formControlName="AntFam" type="text">
+ </mat-form-field>
+
+<!-- ANS -->
+<mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="ANS" formControlName="ANS" type="text">
+ </mat-form-field>
+
+ <!-- CIG -->
+<mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="CIG" formControlName="CIG" type="text">
+ </mat-form-field>
+
+  <!-- AntPers -->
+<mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="Ant.Pers" formControlName="AntPers" type="text">
+ </mat-form-field>
+
+<!-- radio button -->
+<!-- <mat-radio-group class="gender-type" formControlName="genderype">
+
+    <mat-radio-button value="Masculino">Masculino </mat-radio-button>
+<mat-radio-button value="Femenino">Femenino </mat-radio-button>
+
+</mat-radio-group> -->
+
+
+<!-- select -->
+<!-- <mat-form-field appearance="fill">
+    <mat-select formControlName="genderType" placeholder="Sexo">
+        <mat-option >Ninguno</mat-option>
+        <mat-option value="masculino">Masculino</mat-option>
+        <mat-option value="femenino">Femenino</mat-option>
+    </mat-select>
+</mat-form-field> -->
+
+
+<!-- textarea -->
+<mat-form-field appearance="outline">
+    <textarea matInput 
+        placeholder="Síntomas" 
+        formControlName="symptoms" 
+        cdkTextareaAutosize 
+        [cdkAutosizeMinRows]="5"
+        [cdkAutosizeMaxRows]="7" >
+    
+    </textarea>
+</mat-form-field>   
+
+<mat-form-field appearance="outline">
+    <textarea matInput 
+        placeholder="Signos" 
+        formControlName="signs" 
+        cdkTextareaAutosize 
+        [cdkAutosizeMinRows]="5"
+        [cdkAutosizeMaxRows]="7" >
+    
+    </textarea>
+</mat-form-field>   
+
+<mat-form-field appearance="outline">
+    <textarea matInput 
+        placeholder="Psique" 
+        formControlName="psique" 
+        cdkTextareaAutosize 
+        [cdkAutosizeMinRows]="5"
+        [cdkAutosizeMaxRows]="7" >
+    
+    </textarea>
+</mat-form-field>   
+
+<mat-form-field appearance="outline">
+    <textarea matInput 
+        placeholder="Tp Ant." 
+        formControlName="TpAnt" 
+        cdkTextareaAutosize 
+        [cdkAutosizeMinRows]="5"
+        [cdkAutosizeMaxRows]="7" >
+    
+    </textarea>
+</mat-form-field>  
+
+<mat-form-field appearance="outline">
+    <textarea matInput 
+        placeholder="Fcos." 
+        formControlName="Fcos" 
+        cdkTextareaAutosize 
+        [cdkAutosizeMinRows]="5"
+        [cdkAutosizeMaxRows]="7" >
+    
+    </textarea>
+</mat-form-field>  
+
+  <!-- EST -->
+  <mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="EST" formControlName="EST" type="text">
+ </mat-form-field>
+
+  <!-- peso -->
+  <mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="Peso I    kg" formControlName="PesoKG" type="text">
+ </mat-form-field>
+
+  <!-- BMI-->
+  <mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="BMI" formControlName="BMI" type="text">
+ </mat-form-field>
+
+  <!-- Diag -->
+  <mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="Diag" formControlName="Diag" type="text">
+ </mat-form-field>
+
+  <!-- PT -->
+  <mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="PT±" formControlName="PT" type="text">
+ </mat-form-field>
+
+  <!-- KG(BMI) -->
+  <mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="kg (BMI)" formControlName="KG" type="text">
+ </mat-form-field>
+
+  <!-- DES -->
+  <mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="DES" formControlName="DES" type="text">
+ </mat-form-field>
+
+  <!-- MM -->
+  <mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="MM" formControlName="MM" type="text">
+ </mat-form-field>
+
+  <!-- ALM -->
+  <mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="ALM" formControlName="ALM" type="text">
+ </mat-form-field>
+
+   <!-- LON -->
+   <mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="LON" formControlName="LON" type="text">
+ </mat-form-field>
+
+   <!-- CEN -->
+   <mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="CEN" formControlName="CEN" type="text">
+ </mat-form-field>
+
+   <!-- FDS -->
+   <mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="FDS" formControlName="FDS" type="text">
+ </mat-form-field>
+
+   <!-- Dlk -->
+   <mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="Dlk" formControlName="Dlk" type="text">
+ </mat-form-field>
+
+   <!-- Like -->
+   <mat-form-field class="form-field" floatLabel="auto">
+    <input matInput placeholder="Like" formControlName="Like" type="text">
+ </mat-form-field>
+
+
+
+
+</div>
