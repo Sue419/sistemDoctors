@@ -10,17 +10,17 @@ export default class HomeAdminComponent {
   servicios = [
     {
       titulo: 'BOTOX',
-      imagen: '../../../assets/servicios/descarga.png',
+      imagen: '../../../assets/servicios/botox.jpg',
       descripcion: 'Descripción del Servicio 1'
     },
     {
       titulo: 'FILLERS',
-      imagen: '../../../assets/servicios/filler.jpg',
+      imagen: '../../../assets/servicios/filler-estetica.png',
       descripcion: 'Descripción del Servicio 2'
     },
     {
-      titulo: 'RINO-RELLENO',
-      imagen: '../../../assets/servicios/rino.avif',
+      titulo: 'LÁSER',
+      imagen: '../../../assets/servicios/laserl.jpg',
       descripcion: 'Descripción del Servicio 3'
     }
   ];
