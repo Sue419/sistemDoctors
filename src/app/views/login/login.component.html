@@ -1,40 +1,30 @@
 <app-header></app-header>
-<div class="login-view"> <!--ngstyle/ngclass-->
+
+<!-- Login -->
+
+
+<div class="container-login">
+<div class="login-view">
     <div class="container-logo">
         <img class="imgLogin" src="../../../assets/logos/snake-removebg-preview.png" alt="logo snake ">
     </div>
-    <div class="container-login">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
-        <form class="form-login" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" autocomplete="email">
+        </mat-form-field>
+      
+        <mat-form-field appearance="outline">
+          <mat-label>Contraseña</mat-label>
+          <input matInput formControlName="password" type="password" autocomplete="current-password">
+        </mat-form-field>
+      
+        <button mat-raised-button class="btnLogin containerBtn btn-goToRegister " aria-label="Go" color="primary" type="submit" >Iniciar sesión</button>
+    
+      </form>
 
-            <mat-form-field class="form-field" floatLabel="auto" hintLabel="">
-                <mat-label for="email">Email</mat-label>
-                <input  required autocomplete="username"  matInput #input maxlength="60" placeholder="ejemplo@ejemplo.com" cellspacing="5" class="inputS" type="email" id="mail" [(ngModel)]="email" name="user_mail">
-                <div *ngIf="emailError" class="error-message-email">{{emailError}}</div>
-            </mat-form-field>
-
-            <mat-form-field class="form-field" floatLabel="auto" hintLabel="">
-
-                <mat-label for="password">Password</mat-label>
-                <input matInput #input maxlength=""  cellspacing="5"  type="email" id="mail" [(ngModel)]="email" name="user_password" class="inputS" type="password" [(ngModel)]="password" id="password" name="user_password"
-                placeholder="**********"  required autocomplete="current-password" >
-               <div *ngIf="passwordError" class="error-message-password">{{passwordError}}</div>
-           
-            </mat-form-field>
-
-
-
-        
-          
-          
-            <div class="containerBtn">
-                <button mat-raised-button color="primary" class="btnLogin" type="submit">Login</button>
-            </div>
-
-
-        </form>
-
-    </div>
+</div>
 </div>
 
 

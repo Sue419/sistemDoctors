@@ -5,3 +5,16 @@ mat-form-field {
   mat-radio-button{
     margin-right: 5px;
   }
+
+
+.example-full-width {
+  width: 100%;
+}
+
+.full-heigth {
+  height: -webkit-fill-available;
+}
+
+.example-container {
+  margin: 30px 15px
+}
