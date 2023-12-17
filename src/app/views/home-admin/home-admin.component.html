@@ -1,0 +1,25 @@
+
+<div class="portada-container">
+
+    <div class="imagen-container">
+      <!-- Ruta de la imagen del médico -->
+      <img src="../../../assets/fondos/removebg-preview.png" alt="Imagen del médico">
+    </div>
+          <!-- PORTADA -->
+          <div class="container-title">
+            <H1 class="titulo-h1">Bienvenido a MediClinic </H1>
+         <h2 class="titulo-h2">Encantados de poder atenderte...  </h2>
+        </div>
+  </div>
+  
+  <div class="servicios-container">
+    <mat-card *ngFor="let servicio of servicios" class="servicio-card">
+      <mat-card-header>
+        <mat-card-title>{{ servicio.titulo }}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="{{ servicio.imagen }}" alt="{{ servicio.titulo }}">
+      <mat-card-content>
+        {{ servicio.descripcion }}
+      </mat-card-content>
+    </mat-card>
+  </div>
