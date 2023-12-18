@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormControl, FormsModule } from '@angular/forms';
-import { HeaderComponent } from '../../shared/shared-components/header/header.component';
-import FooterComponent from 'src/app/shared/shared-components/footer/footer.component';
-import { LoginService } from 'src/app/services/login/login.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MedicosService } from '../../services/medicos.service';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login/login.service';
+import { MedicosServices } from 'src/app/services/medicos/medicos.services';
+
+MedicosServices
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,7 +21,7 @@ export class LoginComponent  implements OnInit{
   constructor(private fb: FormBuilder,
     private router: Router , 
     public loginService: LoginService,
-    private MedicosService:MedicosService) {
+    private medicosServices:MedicosServices) {
 
 
 
@@ -38,11 +37,11 @@ export class LoginComponent  implements OnInit{
     });
   }
    
-    // ngOnInit() {
+    /* // ngOnInit() {
     //   this.loginService.getCredentials().subscribe((data) => {
     //     console.log('RES 34', data);
     //   })
-    // }
+    // } */
     
     
     onSubmit(){

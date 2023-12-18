@@ -1,7 +1,33 @@
-<p>doctores works!</p>
-
-<button class="btn primay" type="button" (click)="consultarMedicos()">
+<button type="button" (click)="consultarMedicos()" class="btn primary">
     Consultar medicos
 </button>
-<p>Listado de médicos</p>
-{{medicos}}
+
+<p>Listado de medicos</p>
+
+<table class="container">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Tip. Docum</th>
+            <th>Documento</th>
+            <th>Telefono</th>
+            <th>Direccion</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let medico of medicos">
+            <td>{{medico.nombres}}</td>
+            <td>{{medico.apellidos}}</td>
+            <td>{{medico.tip_docum}}</td>
+            <td>{{medico.cod_docum}}</td>
+            <td>{{medico.celular}}</td>
+            <td>{{medico.direccion}}</td>
+            <td>
+                <button type="button" (click)="editarMedico(medico)" class="btn primary">Editar</button>
+                <button type="button" (click)="eliminarMedico(medico)" class="btn primary">Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

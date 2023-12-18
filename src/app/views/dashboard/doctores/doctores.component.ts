@@ -1,32 +1,35 @@
-import { Component } from '@angular/core';
-import { MedicosService } from 'src/app/services/medicos.service';
+import { Component, OnInit } from '@angular/core';
+import { MedicosServices } from 'src/app/services/medicos/medicos.services';
 
 @Component({
   selector: 'app-doctores',
   templateUrl: './doctores.component.html',
   styleUrls: ['./doctores.component.css']
 })
-export class DoctoresComponent {
+export class DoctoresComponent implements OnInit {
 
-  medicos:[]=[]
-  constructor(private medicosService:MedicosService){
+  medicos:any[]=[];
 
+  constructor(
+    private medicosService:MedicosServices
+  ) { }
+  ngOnInit(): void {
   }
 
-
   consultarMedicos(){
-       this.medicosService.getAllMedicos().subscribe({
-         next:(res)=>{
-           //console.log(res)
-             this.medicos = res;
-             console.log(this.medicos);
-             
-         },
-         error:(error)=>{
-             console.log("error",error)   
-         }
-       });  
-//       this.medicosService.getAllMedicos().subscribe(res=>{ this.medicos = res})
-}
+    this.medicosService.consultarMedicos().subscribe({
+      next: (data:any) => {
+        this.medicos = data;
+        console.log(this.medicos);
+      
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+  }
 
+  editarMedico(medico:any){}
+
+  eliminarMedico(medico:any){}
 }
