@@ -5,6 +5,8 @@
 export const environment = {
   production: false,
   apiKey: 'pk.eyJ1IjoibGFkeWRpMzEwMyIsImEiOiJjbHBnaXNtOTEwODN6Mm1wOWxzNDJ1dmFoIn0.FaJVOmTtVnQXVv5r8EHsPw',
+  BASE_URL_BACK: 'http://localhost:3000',
+  URL_ENDPOINT_ALL_MEDICOS: '/medicos'
 };
 
 /*

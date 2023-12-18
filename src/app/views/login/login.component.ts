@@ -1,10 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormControl, FormsModule } from '@angular/forms';
-import { HeaderComponent } from '../../shared/shared-components/header/header.component';
-import FooterComponent from 'src/app/shared/shared-components/footer/footer.component';
-import { LoginService } from 'src/app/services/login/login.service';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login/login.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -30,11 +27,11 @@ export class LoginComponent {
 
 
    
-    // ngOnInit() {
+    /* // ngOnInit() {
     //   this.loginService.getCredentials().subscribe((data) => {
     //     console.log('RES 34', data);
     //   })
-    // }
+    // } */
     
     onSubmit(){
       // debugger
