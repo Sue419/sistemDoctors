@@ -25,9 +25,4 @@ export default class HomeAdminComponent {
     }
   ];
 
-
-
-
-
-
 }

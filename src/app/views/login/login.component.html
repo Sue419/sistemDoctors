@@ -1,32 +1,26 @@
 <app-header></app-header>
 
 <!-- Login -->
-
-
 <div class="container-login">
-<div class="login-view">
-    <div class="container-logo">
-        <img class="imgLogin" src="../../../assets/logos/snake-removebg-preview.png" alt="logo snake ">
-    </div>
+  <div class="login-view">
+
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="container-logo">
+        <img class="imgLogin" src="../../../assets/logos/snake-removebg-preview.png" alt="logo snake ">
+      </div>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" autocomplete="email">
+      </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Email</mat-label>
-          <input matInput formControlName="email" autocomplete="email">
-        </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Contraseña</mat-label>
+        <input matInput formControlName="password" type="password" autocomplete="current-password">
+      </mat-form-field>
+
+      <button mat-raised-button class="btnLogin containerBtn btn-goToRegister " aria-label="Go" color="primary" type="submit" >Iniciar sesión</button>
       
-        <mat-form-field appearance="outline">
-          <mat-label>Contraseña</mat-label>
-          <input matInput formControlName="password" type="password" autocomplete="current-password">
-        </mat-form-field>
-      
-        <button mat-raised-button class="btnLogin containerBtn btn-goToRegister " aria-label="Go" color="primary" type="submit" >Iniciar sesión</button>
-    
-      </form>
-
+    </form>
+  </div>
 </div>
-</div>
-
-
 <app-footer></app-footer>
-

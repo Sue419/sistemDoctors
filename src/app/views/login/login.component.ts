@@ -5,36 +5,45 @@ import { HeaderComponent } from '../../shared/shared-components/header/header.co
 import FooterComponent from 'src/app/shared/shared-components/footer/footer.component';
 import { LoginService } from 'src/app/services/login/login.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MedicosService } from '../../services/medicos.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
-  loginForm: FormGroup;
+export class LoginComponent  implements OnInit{
+  loginForm!: FormGroup;
 
   public email: string = '';
   public emailError: string = '';
   public password: string = '';
   public passwordError: string = '';
 
-  constructor(private fb: FormBuilder,private router: Router , public loginService: LoginService) {
+  constructor(private fb: FormBuilder,
+    private router: Router , 
+    public loginService: LoginService,
+    private MedicosService:MedicosService) {
 
+
+
+  }
+  ngOnInit(): void {
+    this.createFormLogin();
+  }
+
+  createFormLogin(){
     this.loginForm = this.fb.group({
       email: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
-
-
   }
-
-
    
     // ngOnInit() {
     //   this.loginService.getCredentials().subscribe((data) => {
     //     console.log('RES 34', data);
     //   })
     // }
+    
     
     onSubmit(){
       // debugger

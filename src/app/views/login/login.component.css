@@ -1,40 +1,42 @@
 
 .login-view {
     margin: auto;
-    /* padding: 0; */
-    /* background-color: #F72C25; */
-    background-image: url(../../../assets/fondos/telemedicine.jpeg);
+    background-image: url('../../../assets/fondos/telemedicine.jpeg');
     background-position: center;
     background-size: 100% 100%;
-    background-attachment: fixed;
     min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 .container-logo {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: space-around;
-    align-content: center;
+    
 }
 
 .imgLogin {
     /* display: block; */
     margin-right: auto;
     margin-left: auto;
-    margin-top: 8%;
-    width: 300px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 150px;
 }
 
 .container-login {
+    display: flex;
     margin-right: auto;
     margin-left: auto;
-    /* margin-top: 5%; */
-    /* margin-block-end: 12%; */
-    /* background-color: blueviolet; */
-    /* width: 500px;
-    height: 400px; */
-    /* margin-left: 140px; */
     font-size: 30px;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .form-login {
@@ -81,6 +83,7 @@
     margin-top: 5%;
     border-radius: 8px;
 
+
 }
 
 .error-message {
@@ -95,6 +98,8 @@ form {
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: floralwhite;
+    margin-top: 150px;
   }
   
   mat-form-field {
@@ -104,4 +109,13 @@ form {
   
   button {
     width: 100%;
+  }
+  .login-view{
+    background-color:beige;
+  }
+
+  @media screen and (max-width: 768px) {
+    form {
+      width: 80%; /* Ajusta el ancho del formulario para pantallas más pequeñas */
+    }
   }
