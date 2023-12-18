@@ -3,6 +3,6 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  BASE_URL_BACK: 'http://localhost:3100',
+  BASE_URL_BACK: 'https://sis-doctors-back.onrender.com',
   URL_ENDPOINT_MEDICOS:'/medicos'
 }
