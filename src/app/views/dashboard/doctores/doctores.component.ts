@@ -29,7 +29,13 @@ export class DoctoresComponent implements OnInit {
     });
   }
 
-  editarMedico(medico:any){}
+  editarMedico(medico:any){
+    //aqui el metodo para editar por tip_docum y cod_docum
 
-  eliminarMedico(medico:any){}
+    //Me decias que te pasaron el esquema o la conexión siiiiii :)
+  }
+
+  eliminarMedico(medico:any){
+    //aqui el metodo para elikminar por tip_docum y cod_docum
+  }
 }
