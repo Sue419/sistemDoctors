@@ -9,6 +9,7 @@ export class MedicosService {
 
   constructor(private httpClient: HttpClient) { }
 
+  // Método get para traernos a todos los médicos
   getAllMedicos():Observable<any>{
     const options = {
       headers: new HttpHeaders({

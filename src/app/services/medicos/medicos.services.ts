@@ -9,7 +9,6 @@ import { environment } from "src/environments/environment";
 export class MedicosServices{
 
     constructor(private httpClient: HttpClient){}
-
     consultarMedicos(): Observable<any>{
     return this.httpClient.get(environment.BASE_URL_BACK + environment.URL_ENDPOINT_MEDICOS);
     }
