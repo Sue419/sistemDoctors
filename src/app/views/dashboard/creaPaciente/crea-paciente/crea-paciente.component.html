@@ -27,7 +27,7 @@
         <!-- input edad del paciente -->
         <mat-form-field class="form-field example-full-width" floatLabel="auto" align=" end">
           <mat-label>Edad</mat-label>
-          <input matInput placeholder="Ex.18" formControlName="paciente" type="text">
+          <input matInput placeholder="Ex.18" formControlName="edad" type="text">
           <mat-error *ngIf="nombrePaciente.hasError('required')">Ingresar la edad es obligatorio</mat-error>
         </mat-form-field>
       </mat-grid-tile>
@@ -112,7 +112,7 @@
         <!-- OCUPACION -->
         <mat-form-field class="form-field example-full-width" floatLabel="auto">
           <mat-label>Ocupac</mat-label>
-          <input matInput placeholder="Ex Albañil" formControlName="" type="text">
+          <input matInput placeholder="Ex Albañil" formControlName="Ocupac" type="text">
         </mat-form-field>
       </mat-grid-tile>
 
@@ -391,7 +391,7 @@
         <!-- Diag -->
         <mat-form-field class="form-field example-full-width" floatLabel="auto">
           <mat-label>Diagnóstico</mat-label>
-          <input matInput placeholder="" formControlName="Diag" type="text">
+          <input matInput placeholder="" formControlName="diag" type="text">
         </mat-form-field>
 
       </mat-grid-tile>
@@ -545,6 +545,12 @@
 
     </mat-grid-list>
 
+    <section>
+      <div class="example-button-row">
+        <button mat-raised-button>Cancelar</button>
+        <button mat-raised-button color="primary" (click)="crearPacienteNuevo()">Crear Paciente</button>
+      </div>
+    </section>
 
 
   </div>

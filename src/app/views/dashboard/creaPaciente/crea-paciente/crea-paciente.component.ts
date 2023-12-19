@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms'
+import { PacientesService } from '../../../../services/pacientes/pacientes.service';
+
+
 
 
 @Component({
@@ -8,6 +11,8 @@ import { FormBuilder, Validators } from '@angular/forms'
   styleUrls: ['./crea-paciente.component.css']
 })
 export class CreaPacienteComponent {
+
+  pacientes:any[]=[];
 
 form = this.fb.group({
 paciente: ['', [
@@ -20,7 +25,6 @@ appointment: [new Date(), Validators.required],
 category: ['BEGINNER', Validators.required],
 genderType: ['Femenino', Validators.required],
 edad:[],
-downloadsAllowed: [false, Validators.requiredTrue],
 symptoms: ['', [Validators.required, Validators.minLength(3)]],
 signs: ['', [Validators.required, Validators.minLength(3)]],
 psique: ['', [Validators.required, Validators.minLength(3)]],
@@ -48,7 +52,6 @@ AntFam:[],
 ANS:[],
 CIG:[],
 AntPers:[],
-
 EST:[],
 PesoKG:[],
 BMI:[],
@@ -69,11 +72,36 @@ Tratamientos:[],
 
 
 
-
-
-constructor(private fb: FormBuilder){
+constructor(private fb: FormBuilder, private pacientesService: PacientesService){
 
 }
+
+crearPacienteNuevo(){
+  if(this.form.valid){
+    const body = this.form.value;
+    console.log(body, 'body');
+    
+    this.pacientesService.crearPaciente(body).subscribe({
+      next : (data:any) => {
+        this.pacientes = data;
+        console.log(this.pacientes, 'Paciente creado exitosamente');
+      } ,
+      error : (error: any) =>{
+        console.log(error, 'error al crear paciente');
+      } 
+    }
+    
+    )} else{
+      console.error('Formulario no válido');
+    }
+  }
+
+
+
+
+
+
+
 
 get nombrePaciente(){
   return this.form.controls['paciente'];

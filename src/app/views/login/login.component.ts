@@ -10,7 +10,7 @@ MedicosServices
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent  implements OnInit{
+export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
 
   public email: string = '';
@@ -19,9 +19,9 @@ export class LoginComponent  implements OnInit{
   public passwordError: string = '';
 
   constructor(private fb: FormBuilder,
-    private router: Router , 
+    private router: Router,
     public loginService: LoginService,
-    private medicosServices:MedicosServices) {
+    private medicosServices: MedicosServices) {
 
 
 
@@ -30,23 +30,15 @@ export class LoginComponent  implements OnInit{
     this.createFormLogin();
   }
 
-  createFormLogin(){
+  createFormLogin() {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
   }
-   
-    /* // ngOnInit() {
-    //   this.loginService.getCredentials().subscribe((data) => {
-    //     console.log('RES 34', data);
-    //   })
-    // } */
-    
-    
-    onSubmit(){
-      // debugger
-       // Aquí puedes manejar la lógica de autenticación
+  onSubmit() {
+    // debugger
+    // Aquí puedes manejar la lógica de autenticación
     if (this.loginForm.valid && this.loginForm.value.email === 'juan@doctor.pe') {
       this.router.navigateByUrl('/dashboard');
       console.log('Formulario válido. Enviar datos al servidor.');
@@ -54,10 +46,9 @@ export class LoginComponent  implements OnInit{
       console.log('Formulario inválido. Verifica tus datos.');
       this.emailError = 'Por favor, ingrese un correo válido';
     }
- 
-    }
   }
-  
+}
+
 
 
 
