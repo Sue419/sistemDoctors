@@ -16,7 +16,9 @@ export class PacientesService {
 
 
   crearPaciente(datos: any): Observable<any>{
-    const headers = new HttpHeaders();
+    const headers = new HttpHeaders({
+      'accept': 'application/json',
+    })
     return this.httpClient.post(environment.BASE_URL_BACK+environment.URL_ENDPOINT_PACIENTES, datos, {headers} );
     }
   
