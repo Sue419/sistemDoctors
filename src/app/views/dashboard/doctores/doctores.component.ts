@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MedicosServices } from 'src/app/services/medicos/medicos.services';
+import { MedicosService } from 'src/app/services/medicos/medicos.service';
 
 @Component({
   selector: 'app-doctores',
@@ -11,13 +11,13 @@ export class DoctoresComponent implements OnInit {
   medicos:any[]=[];
 
   constructor(
-    private medicosService:MedicosServices
+    private medicosService:MedicosService
   ) { }
   ngOnInit(): void {
   }
 
   consultarMedicos(){
-    this.medicosService.consultarMedicos().subscribe({
+    this.medicosService.getAllMedicos().subscribe({
       next: (data:any) => {
         this.medicos = data;
         console.log(this.medicos);
@@ -28,11 +28,8 @@ export class DoctoresComponent implements OnInit {
       }
     });
   }
-
   editarMedico(medico:any){
     //aqui el metodo para editar por tip_docum y cod_docum
-
-    //Me decias que te pasaron el esquema o la conexión siiiiii :)
   }
 
   eliminarMedico(medico:any){

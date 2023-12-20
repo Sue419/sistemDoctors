@@ -1,8 +1,15 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatSort, Sort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
+import { PacientesService } from 'src/app/services/pacientes/pacientes.service';
 
+export interface Paciente {
+  position: number;
+  nombrePaciente: string;
+  dni: number;
+  acciones: string;
+}
 
 
 @Component({
@@ -10,51 +17,53 @@ import {LiveAnnouncer} from '@angular/cdk/a11y';
   templateUrl: './pacientes.component.html',
   styleUrls: ['./pacientes.component.css']
 })
-export class PacientesComponent implements AfterViewInit{
+export class PacientesComponent implements AfterViewInit, OnInit{
 
-  displayedColumns: string[] = ['position', 'nombrePaciente', 'dni', 'acciones'];
-  dataSource = new MatTableDataSource<PacientesList>(ELEMENT_DATA);
+  displayedColumns:string[] = ['position', 'nombrePaciente', 'dni', 'telefono', 'Dirección','acciones'];
+  dataSource = new MatTableDataSource<Paciente>();
 
   @ViewChild(MatSort) sort!: MatSort;
 
+  constructor(
+    private _liveAnnouncer: LiveAnnouncer,
+    private pacientesService: PacientesService
+  ) { }
+
+  ngOnInit(): void {
+    this.consultarPacientes();
+  }
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
   }
 
+    announceSortChange(sortState: Sort): void {
+      const direction = sortState.direction ? `${sortState.direction}ending` : 'cleared';
+      this._liveAnnouncer.announce(`Sorted ${direction}`);
+  }
+  
 
+  consultarPacientes(){
+    this.pacientesService.getAllPacientes().subscribe({
+      next: (data:any) => {
+        // this.pacientes = data;
+        this.dataSource.data = data;
+        console.log(this.dataSource.data);
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+  }
 
+  editarPaciente(medico:any){
+    //aqui el metodo para editar por tip_docum y cod_docum
 
+    //Me decias que te pasaron el esquema o la conexión siiiiii :)
+  }
 
-  /** Announce the change in sort state for assistive technology. */
-  announceSortChange(sortState: Sort): void {
-    const direction = sortState.direction ? `${sortState.direction}ending` : 'cleared';
-    this._liveAnnouncer.announce(`Sorted ${direction}`);
+  eliminarPaciente(medico:any){
+    //aqui el metodo para elikminar por tip_docum y cod_docum
+  }
 }
 
-constructor(private _liveAnnouncer: LiveAnnouncer) {}
 
-
-}
-
-
-
-
-// interfaz
-export interface PacientesList {
-  nombrePaciente: string;
-  position: number;
-  dni: number;
-  acciones: string;
-}
-const ELEMENT_DATA: PacientesList[] = [
-  {position: 1, nombrePaciente: 'Laura Gomez', dni: 44165393, acciones: ''},
-  {position: 2, nombrePaciente: 'Miranda Checa', dni: 11111111, acciones: ''},
-  {position: 3, nombrePaciente: 'Lupe Acosta', dni: 22222222, acciones: ''},
-  {position: 4, nombrePaciente: 'Mariana Portugal', dni: 33333333, acciones: ''},
-  {position: 5, nombrePaciente: 'Juana Revoredo', dni: 15555530, acciones: ''},
-  {position: 6, nombrePaciente: 'Lucas Rubinshtein', dni: 15478963, acciones: ''},
-  {position: 7, nombrePaciente: 'Nadia Quispe', dni: 98745632, acciones: ''},
-  {position: 8, nombrePaciente: 'Sebastian Osorio', dni: 99999999, acciones: ''},
-  {position: 9, nombrePaciente: 'María Toribio', dni: 55555555, acciones: ''},
-  {position: 10, nombrePaciente: 'Azucena Quispe', dni: 66666666, acciones: ''},
-];
