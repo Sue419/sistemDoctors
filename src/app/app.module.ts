@@ -45,6 +45,7 @@ import { DoctoresComponent } from './views/dashboard/doctores/doctores.component
 import { MatNativeDateModule } from '@angular/material/core';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -93,6 +94,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatNativeDateModule,
     MatGridListModule,
     MatFormFieldModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

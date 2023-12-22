@@ -137,7 +137,7 @@
 
 
 
-    <h2>Antecedentes medicos</h2>
+    <h2>Antecedentes pacientes</h2>
 
     <mat-grid-list cols="12" rowHeight="100px" gutterSize="15">
       <mat-grid-tile [colspan]="8">
@@ -547,7 +547,7 @@
 
     <section>
       <div class="example-button-row">
-        <button mat-raised-button>Cancelar</button>
+        <button mat-raised-button (click)="onCancelClick">Cancelar</button>
         <button mat-raised-button color="primary" (click)="crearPacienteNuevo()">Crear Paciente</button>
       </div>
     </section>

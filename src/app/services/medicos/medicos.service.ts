@@ -18,4 +18,5 @@ export class MedicosService {
     };
     return this.httpClient.get(environment.BASE_URL_BACK + environment.URL_ENDPOINT_MEDICOS);
   }
+
 }
