@@ -3,11 +3,17 @@ import {MatSort, Sort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
 import { PacientesService } from 'src/app/services/pacientes/pacientes.service';
+import { EditModalComponent } from '../../edit-modal/edit-modal.component';
+import { DeleteModalComponent } from '../../delete-modal/delete-modal.component';
+import { MatDialog } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
 
 export interface Paciente {
   position: number;
   nombrePaciente: string;
   dni: number;
+  telefono: string;
+  Direccion: string;
   acciones: string;
 }
 
@@ -26,7 +32,8 @@ export class PacientesComponent implements AfterViewInit, OnInit{
 
   constructor(
     private _liveAnnouncer: LiveAnnouncer,
-    private pacientesService: PacientesService
+    private pacientesService: PacientesService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -36,7 +43,7 @@ export class PacientesComponent implements AfterViewInit, OnInit{
     this.dataSource.sort = this.sort;
   }
 
-    announceSortChange(sortState: Sort): void {
+    announceSortChange(sortState:Sort): void {
       const direction = sortState.direction ? `${sortState.direction}ending` : 'cleared';
       this._liveAnnouncer.announce(`Sorted ${direction}`);
   }
@@ -45,7 +52,6 @@ export class PacientesComponent implements AfterViewInit, OnInit{
   consultarPacientes(){
     this.pacientesService.getAllPacientes().subscribe({
       next: (data:any) => {
-        // this.pacientes = data;
         this.dataSource.data = data;
         console.log(this.dataSource.data);
       },
@@ -55,15 +61,103 @@ export class PacientesComponent implements AfterViewInit, OnInit{
     });
   }
 
-  editarPaciente(medico:any){
-    //aqui el metodo para editar por tip_docum y cod_docum
-
-    //Me decias que te pasaron el esquema o la conexión siiiiii :)
+  editarPaciente(paciente: Paciente) {
+    const dialogRef = this.dialog.open(EditModalComponent, {
+      width: '800px',
+      data: { paciente }
+    });
+  
+    dialogRef.afterClosed().subscribe((result:any) => {
+      if (result) {
+        this.pacientesService.editarPaciente(paciente).subscribe({
+          next: (data: any) => {
+            console.log(data);
+            console.log(`Paciente ${paciente.nombrePaciente} editado correctamente`);
+            this.consultarPacientes();
+            
+          },
+          error: (error) => {
+            console.log(`Error al editar el paciente ${paciente.nombrePaciente}: ${error}`);
+          }
+        });
+      }
+    });
   }
 
-  eliminarPaciente(medico:any){
-    //aqui el metodo para elikminar por tip_docum y cod_docum
-  }
+  eliminarPaciente(paciente: Paciente) {
+    // const dialogRef = this.dialog.open(DeleteModalComponent, {
+    //   width: '800px',
+    //   data: { paciente }
+    // }
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger"
+      },
+      buttonsStyling: false
+    });
+
+    swalWithBootstrapButtons.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "No, cancel!",
+      reverseButtons: true
+
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // User clicked "Yes, delete it!"
+        this.pacientesService.eliminarPaciente().subscribe({
+          next: (data: any) => {
+            console.log(`Paciente ${paciente.nombrePaciente} eliminado correctamente`);
+            this.consultarPacientes();
+
+            this.swalSuccess();
+          
+
+      }, 
+      error: (error) => {
+        console.log(`Error al eliminar el paciente ${paciente.nombrePaciente}: ${error}`);
+        // Handle error with a SweetAlert here
+   this.swalError(paciente.nombrePaciente, error)
+      }
+    });
+  } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel) {
+           // User clicked "No, cancel!"
+          this.swalCancelled();
+      }
+    }); 
+  }  
+
+// Helper methods for handling SweetAlerts
+private swalSuccess() {
+  Swal.fire({
+    title: "Deleted!",
+    text: "Your file has been deleted.",
+    icon: "success"
+  });
+}
+
+private swalError(nombrePaciente: string, error: any) {
+  Swal.fire({
+    title: "Error",
+    text: `Error al eliminar el paciente ${nombrePaciente}: ${error}`,
+    icon: "error"
+  });
+}
+
+private swalCancelled() {
+  Swal.fire({
+    title: "Cancelled",
+    text: "Your imaginary file is safe :)",
+    icon: "error"
+  });
+}
+
 }
 
 

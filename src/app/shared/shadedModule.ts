@@ -4,6 +4,9 @@ import FooterComponent from './shared-components/footer/footer.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { DeleteModalComponent } from '../views/dashboard/delete-modal/delete-modal.component';
+import { EditModalComponent } from '../views/dashboard/edit-modal/edit-modal.component';
+
 
 
 
@@ -11,6 +14,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 declarations: [ 
     HeaderComponent,
     FooterComponent,
+    DeleteModalComponent,
+    EditModalComponent,
+
 ],
 imports: [
     MatIconModule,
@@ -20,6 +26,8 @@ imports: [
 exports: [
 HeaderComponent,
 FooterComponent,
+DeleteModalComponent,
+EditModalComponent,
 
 ]
 })

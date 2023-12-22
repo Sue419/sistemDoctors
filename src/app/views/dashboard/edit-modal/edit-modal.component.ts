@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-modal',
@@ -8,3 +9,9 @@ import { Component } from '@angular/core';
 export class EditModalComponent {
 
 }
+Swal.fire({
+  title: '¡Hola!',
+  text: '¡Bienvenido a SweetAlert2!',
+  icon: 'success',
+  confirmButtonText: 'Aceptar'
+});

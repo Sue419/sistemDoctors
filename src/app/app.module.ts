@@ -44,8 +44,6 @@ import { HistorialComponent } from './views/dashboard/Historial/historial/histor
 import { DoctoresComponent } from './views/dashboard/doctores/doctores.component';
 import { MatNativeDateModule } from '@angular/material/core';
 
-import { DeleteModalComponent } from './views/dashboard/delete-modal/delete-modal.component';
-import { EditModalComponent } from './views/dashboard/edit-modal/edit-modal.component';
 
 
 @NgModule({
@@ -61,8 +59,6 @@ import { EditModalComponent } from './views/dashboard/edit-modal/edit-modal.comp
     NuevoHistorialComponent,
     HistorialComponent,
     DoctoresComponent,
-    DeleteModalComponent,
-    EditModalComponent,
 
   ],
   imports: [
@@ -98,6 +94,7 @@ import { EditModalComponent } from './views/dashboard/edit-modal/edit-modal.comp
     MatNativeDateModule,
     MatGridListModule,
     MatFormFieldModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

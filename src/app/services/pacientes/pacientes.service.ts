@@ -26,7 +26,58 @@ export class PacientesService {
       };
       return this.httpClient.get(environment.BASE_URL_BACK + environment.URL_ENDPOINT_PACIENTES);
     }
+
+    editarPaciente(Onepaciente: any): Observable<any> {
+      const headers = new HttpHeaders({
+        'accept': 'application/json',
+      })
+      return this.httpClient.put(environment.BASE_URL_BACK + environment.URL_ENDPOINT_PACIENTES+"/:id", Onepaciente,{headers});
+    }
+  
+    eliminarPaciente(): Observable<any> {
+      const headers = new HttpHeaders({
+        'accept': 'application/json',
+      })
+   
+      return this.httpClient.delete(environment.BASE_URL_BACK + environment.URL_ENDPOINT_PACIENTES+"/:id");
+    }
+
+
+
+
+
+
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // public menu: any = [
 // {
 //   titulo: 'Doctores',

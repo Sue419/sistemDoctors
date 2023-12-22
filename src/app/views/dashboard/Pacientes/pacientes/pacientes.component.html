@@ -19,7 +19,7 @@
 
   NombrePaciente Column 
   <ng-container matColumnDef="nombrePaciente">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by nombrePaciente">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by NombrePaciente">
       Nombre del Paciente
     </th>
     <td mat-cell *matCellDef="let element"> {{element.Paciente}}</td>
@@ -35,7 +35,7 @@
 
   Telefono Column -
   <ng-container matColumnDef="telefono">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by dni">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by telefono">
   Teléfono
     </th>
     <td mat-cell *matCellDef="let element"> {{element.Telefono}} </td>
@@ -43,7 +43,7 @@
 
 Dirección Column -
   <ng-container matColumnDef="Dirección">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by dni">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Direccion">
      Dirección
     </th>
     <td mat-cell *matCellDef="let paciente"> {{paciente.Direccion}} </td>
@@ -54,11 +54,10 @@ Dirección Column -
     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by acciones">
      Acciones
     </th>
-    <td mat-cell *matCellDef="let element"> {{element.acciones}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.acciones}}
 
-    <td mat-cell *matCellDef="let paciente">
-      <mat-icon type="button" (click)="eliminarPaciente(paciente)" class="btn primary">Borrar</mat-icon>
-      <mat-icon type="button" (click)="editarPaciente(paciente)"class="btn primary" >Editar</mat-icon>
+      <mat-icon (click)="eliminarPaciente(element)" > delete </mat-icon>
+      <mat-icon (click)="editarPaciente(element)" > edit </mat-icon>
   </td>
   </ng-container>
 
