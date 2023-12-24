@@ -1,14 +1,20 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {MatSort, Sort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
-import {LiveAnnouncer} from '@angular/cdk/a11y';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatSort, Sort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { PacientesService } from 'src/app/services/pacientes/pacientes.service';
-import { EditModalComponent } from '../../edit-modal/edit-modal.component';
-import { DeleteModalComponent } from '../../delete-modal/delete-modal.component';
+
 import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
+import { DataUserEdit } from 'src/app/interfaces/interfaces';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { EditModalComponent } from '../../edit-modal/edit-modal.component';
 
+
+
+// INTERFACE PARA EL TABLE-HEAD
 export interface Paciente {
+  id: number,
   position: number;
   nombrePaciente: string;
   dni: number;
@@ -23,12 +29,29 @@ export interface Paciente {
   templateUrl: './pacientes.component.html',
   styleUrls: ['./pacientes.component.css']
 })
-export class PacientesComponent implements AfterViewInit, OnInit{
+export class PacientesComponent implements AfterViewInit, OnInit {
 
-  displayedColumns:string[] = ['position', 'nombrePaciente', 'dni', 'telefono', 'Dirección','acciones'];
+  displayedColumns: string[] = ['position', 'nombrePaciente', 'dni', 'telefono', 'Dirección', 'acciones'];
   dataSource = new MatTableDataSource<Paciente>();
 
+  showModalEdit: boolean = false;
+  paciente!: Paciente;
+
   @ViewChild(MatSort) sort!: MatSort;
+
+
+// F O R M  R E A C T I V O
+  //form: todos los input que recolectan la Data
+  form = new FormGroup({
+    email: new FormControl(''),
+    id: new FormControl(''),
+    NombrePaciente: new FormControl(''),
+    dni: new FormControl(''),
+    Telefono: new FormControl(),
+    Direccion: new FormControl(''),
+  });
+
+
 
   constructor(
     private _liveAnnouncer: LiveAnnouncer,
@@ -43,15 +66,15 @@ export class PacientesComponent implements AfterViewInit, OnInit{
     this.dataSource.sort = this.sort;
   }
 
-    announceSortChange(sortState:Sort): void {
-      const direction = sortState.direction ? `${sortState.direction}ending` : 'cleared';
-      this._liveAnnouncer.announce(`Sorted ${direction}`);
+  announceSortChange(sortState: Sort): void {
+    const direction = sortState.direction ? `${sortState.direction}ending` : 'cleared';
+    this._liveAnnouncer.announce(`Sorted ${direction}`);
   }
-  
 
-  consultarPacientes(){
+
+  consultarPacientes() {
     this.pacientesService.getAllPacientes().subscribe({
-      next: (data:any) => {
+      next: (data: any) => {
         this.dataSource.data = data;
         console.log(this.dataSource.data);
       },
@@ -61,79 +84,124 @@ export class PacientesComponent implements AfterViewInit, OnInit{
     });
   }
 
-  editarPaciente(paciente: Paciente) {
+  editarPaciente(paciente: any) {
+    console.log(paciente, "paciente")
     const dialogRef = this.dialog.open(EditModalComponent, {
-      width: '800px',
+      width: '900px',
       data: { paciente }
     });
-  
-    dialogRef.afterClosed().subscribe((result:any) => {
+
+    dialogRef.afterClosed().subscribe((result: any) => {
       if (result) {
         this.pacientesService.editarPaciente(paciente).subscribe({
           next: (data: any) => {
             console.log(data);
-            console.log(`Paciente ${paciente.nombrePaciente} editado correctamente`);
+            console.log(`Paciente ${paciente.id} editado correctamente`);
             this.consultarPacientes();
-            
+
           },
           error: (error) => {
-            console.log(`Error al editar el paciente ${paciente.nombrePaciente}: ${error}`);
+            console.log(`Error al editar el paciente ${paciente.id}: ${error}`);
           }
         });
       }
     });
   }
 
-  eliminarPaciente(paciente: Paciente) {
-    // const dialogRef = this.dialog.open(DeleteModalComponent, {
-    //   width: '800px',
-    //   data: { paciente }
-    // }
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: "btn btn-success",
-        cancelButton: "btn btn-danger"
-      },
-      buttonsStyling: false
-    });
+  openModalEditUser() {
+    this.showModalEdit = true;
+  }
+  closeModal() {
+ 
+    this.showModalEdit = false;
+    // this.form.reset();
+  }
 
-    swalWithBootstrapButtons.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "Yes, delete it!",
-      cancelButtonText: "No, cancel!",
-      reverseButtons: true
+  // editPaciente(): void {
+  //   const paciente: DataUserEdit = {
+  //     id: Number(this.form.value.id) ,
+  //     NombrePaciente: this.form.value.NombrePaciente || '',
+  //     dni: Number(this.form.value.dni) ,
+  //     Telefono: this.form.value.Telefono || '',
+  //     Direccion: this.form.value.Direccion || '',
+  
+      
+  //     }
+  //   }
 
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // User clicked "Yes, delete it!"
-        this.pacientesService.eliminarPaciente().subscribe({
-          next: (data: any) => {
-            console.log(`Paciente ${paciente.nombrePaciente} eliminado correctamente`);
-            this.consultarPacientes();
 
-            this.swalSuccess();
-          
 
-      }, 
-      error: (error) => {
-        console.log(`Error al eliminar el paciente ${paciente.nombrePaciente}: ${error}`);
-        // Handle error with a SweetAlert here
-   this.swalError(paciente.nombrePaciente, error)
-      }
-    });
-  } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel) {
-           // User clicked "No, cancel!"
+
+
+
+
+
+
+
+
+
+
+
+
+
+  eliminarPacientePorId(paciente: any) {
+    console.log(paciente, "paciente");
+  
+    if(paciente){
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: "btn btn-success",
+          cancelButton: "btn btn-danger"
+        },
+        buttonsStyling: false
+      });
+  
+      swalWithBootstrapButtons.fire({
+        title: "Estás seguro?",
+        text: "No podrás revertir esto!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "SI, Bórralo!",
+        cancelButtonText: "NO, Cancel!",
+        reverseButtons: true
+      }).then((result: any) => {
+        if (result.isConfirmed) {
+          this.pacientesService.eliminarPaciente(paciente).subscribe({
+            next: (res: any) => {
+              if(res){
+                console.log(`Paciente ${paciente.paciente} eliminado correctamente`);
+                this.consultarPacientes();
+                this.swalSuccess();
+              }
+            },
+            error: (error) => {
+              console.log(`Error al eliminar el paciente ${paciente.paciente}: ${error}`);
+              this.swalError(paciente.NombrePaciente, error);
+            }
+          });
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
           this.swalCancelled();
-      }
-    }); 
-  }  
+        }
+      });
+    }else{
+      console.log("Error al elminiar paciente");
+    }
+  }
+  
+       
 
-// Helper methods for handling SweetAlerts
+    // if(paciente){
+    //     this.pacientesService.eliminarPaciente(paciente).subscribe(res =>{
+    //       if(res){
+    //         console.log("paciente eliminado correctamente", paciente);
+    //         this.consultarPacientes();
+    //       }
+    //     })
+    // }else{
+    //   console.log("Error al elminiar paciente");
+    // }
+
+
 private swalSuccess() {
   Swal.fire({
     title: "Deleted!",
@@ -152,12 +220,10 @@ private swalError(nombrePaciente: string, error: any) {
 
 private swalCancelled() {
   Swal.fire({
-    title: "Cancelled",
-    text: "Your imaginary file is safe :)",
+    title: "Cancelado!!!",
+    text: "Tu archivo está seguro :)",
     icon: "error"
   });
 }
 
 }
-
-

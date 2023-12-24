@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
-
+import { DataUserEdit } from '../../interfaces/interfaces';
+import { of } from 'rxjs'; // Asegúrate de importar 'of' de 'rxjs'
+import { Paciente } from '../../views/dashboard/Pacientes/pacientes/pacientes.component';
 @Injectable({
   providedIn: 'root'
 })
@@ -24,22 +26,38 @@ export class PacientesService {
           'Content-Type': 'application/json',
         }),
       };
-      return this.httpClient.get(environment.BASE_URL_BACK + environment.URL_ENDPOINT_PACIENTES);
+      return this.httpClient.get(environment.BASE_URL_BACK + environment.URL_ENDPOINT_PACIENTES, options);
     }
 
-    editarPaciente(Onepaciente: any): Observable<any> {
+    // editarPaciente(userData: DataUserEdit): Observable<any> {
+    //   const headers = new HttpHeaders({
+    //     'accept': 'application/json',
+    //   })
+    //   return this.httpClient.patch<any>(environment.BASE_URL_BACK + environment.URL_ENDPOINT_PACIENTES+`${userData.id}`, userData,{headers});
+    // }
+
+    editarPaciente(paciente: any): Observable<any> {
       const headers = new HttpHeaders({
         'accept': 'application/json',
       })
-      return this.httpClient.put(environment.BASE_URL_BACK + environment.URL_ENDPOINT_PACIENTES+"/:id", Onepaciente,{headers});
+      const body = {
+        tipDocum: paciente.IdTipoDocumento,
+        codDocum: paciente.NumeroDocumento
+      };
+      return this.httpClient.patch<any>(environment.BASE_URL_BACK + environment.URL_ENDPOINT_PACIENTES+`${paciente.id}`, body,{headers});
     }
   
-    eliminarPaciente(): Observable<any> {
-      const headers = new HttpHeaders({
-        'accept': 'application/json',
-      })
-   
-      return this.httpClient.delete(environment.BASE_URL_BACK + environment.URL_ENDPOINT_PACIENTES+"/:id");
+    eliminarPaciente(paciente: any): Observable<any> {
+      if(paciente){
+        const body = {
+          tipDocum: paciente.IdTipoDocumento,
+          codDocum: paciente.NumeroDocumento
+        };
+        return this.httpClient.post<any>(environment.BASE_URL_BACK + environment.URL_ENDPOINT_ELIMINAR_PACIENTE,body);
+      } else{
+        console.error('El objeto paciente es undefined');
+        return of(null);
+      }  
     }
 
 
