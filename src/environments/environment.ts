@@ -7,4 +7,5 @@ export const environment = {
    BASE_URL_BACK: 'http://localhost:3000',
   URL_ENDPOINT_MEDICOS:'/medicos',
   URL_ENDPOINT_PACIENTES:'/pacientes',
+  URL_ENDPOINT_ELIMINAR_PACIENTE: '/eliminarPaciente',
 }

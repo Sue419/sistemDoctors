@@ -1,11 +1,11 @@
-export interface Lugar {
-    punto: {
-        coordinates: [number, number];
-    };
-    nombre_sede: string;
+export interface DataUserEdit {
+    id: number;
+    NombrePaciente: string;
+    dni: number;
+    Telefono: number;
+    Direccion: string;
 }
 
-export interface LugarInfo {
-    posicion: { lat: number; lng: number };
-    nombre: string;
-}
+export interface DialogData {
+    paciente: DataUserEdit;
+  }
