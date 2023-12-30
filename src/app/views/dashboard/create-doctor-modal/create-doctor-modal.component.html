@@ -1,0 +1,47 @@
+<h2 mat-dialog-title>Nuevo Médico</h2>
+<div mat-dialog-content>
+
+<mat-form-field>
+        <mat-label>Id Doctor</mat-label>
+        <input matInput [(ngModel)]="data.id_medico">
+</mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input matInput [(ngModel)]="data.nom_medico">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Apellido</mat-label>
+    <input matInput [(ngModel)]="data.ape_medico">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Tipo Documento</mat-label>
+    <input matInput [(ngModel)]="data.tip_docum">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Número Documento</mat-label>
+    <input matInput [(ngModel)]="data.cod_docum">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Teléfono</mat-label>
+    <input matInput [(ngModel)]="data.celular">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput [(ngModel)]="data.email">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Dirección</mat-label>
+    <input matInput [(ngModel)]="data.direccion">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data" color="primary" cdkFocusInitial>Crear Nuevo Doctor</button>
+</div>

@@ -19,6 +19,7 @@ export interface Paciente {
   nombrePaciente: string;
   dni: number;
   telefono: string;
+  email: string;
   Direccion: string;
   acciones: string;
 }
@@ -31,7 +32,7 @@ export interface Paciente {
 })
 export class PacientesComponent implements AfterViewInit, OnInit {
 
-  displayedColumns: string[] = ['position', 'nombrePaciente', 'dni', 'telefono', 'Dirección', 'acciones'];
+  displayedColumns: string[] = ['position', 'nombrePaciente', 'dni', 'telefono','email', 'Dirección', 'acciones'];
   dataSource = new MatTableDataSource<Paciente>();
 
   showModalEdit: boolean = false;
@@ -50,9 +51,7 @@ export class PacientesComponent implements AfterViewInit, OnInit {
     Telefono: new FormControl(),
     Direccion: new FormControl(''),
   });
-
-
-
+  
   constructor(
     private _liveAnnouncer: LiveAnnouncer,
     private pacientesService: PacientesService,
@@ -101,7 +100,7 @@ export class PacientesComponent implements AfterViewInit, OnInit {
 
           },
           error: (error) => {
-            console.log(`Error al editar el paciente ${paciente.id}: ${error}`);
+            console.log(`Error al editar el paciente ${paciente.id}: $error}`);
           }
         });
       }

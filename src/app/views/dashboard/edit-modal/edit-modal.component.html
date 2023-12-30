@@ -1,10 +1,80 @@
 <h1 mat-dialog-title>Editar Paciente</h1>
 <div mat-dialog-content>
   <p>Editar los detalles del paciente aquí:</p>
- 
-  <mat-form-field>
+ <!-- form en form Control name y eso asociar con  el form -->
+
+
+ <form [formGroup]="formulario2"  class="mat-elevation-z8">
+  <mat-form-field appearance="fill">
+    <mat-label>ID</mat-label>
+    <input matInput id="id" formControlName="id" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Nombre del Paciente</mat-label>
+    <input matInput id="NombrePaciente" formControlName="NombrePaciente" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>DNI</mat-label>
+    <input matInput id="dni" formControlName="dni" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Teléfono</mat-label>
+    <input matInput id="Telefono" formControlName="Telefono" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Correo Electrónico</mat-label>
+    <input matInput id="Email" formControlName="Email" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Dirección</mat-label>
+    <input matInput id="Direccion" formControlName="Direccion" />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="editarPaciente()" [disabled]="formulario2.invalid">Editar Paciente</button>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <mat-form-field>
     <mat-label>Id</mat-label>
-    <input matInput [value]="data.paciente.IdPaciente" placeholder="Id">
+    <input matInput formControlName="id" placeholder="Id">
   </mat-form-field>
 
   <mat-form-field>
@@ -23,6 +93,11 @@
   </mat-form-field>
 
   <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput [value]="data.paciente.Email" placeholder="Ex. ejemplo@ejemplo.com">
+  </mat-form-field>
+
+  <mat-form-field>
     <mat-label>Dirección</mat-label>
     <input matInput [value]="data.paciente.Domicilio" placeholder="Dirección">
   </mat-form-field>
@@ -31,7 +106,7 @@
 <div mat-dialog-actions>
   <button mat-button (click)="onClick()">Cancelar</button>
   <button mat-button cdkFocusInitial (click)="editarPaciente(data.paciente)">Editar Paciente</button>
-</div>
+</div> -->
 
 
 

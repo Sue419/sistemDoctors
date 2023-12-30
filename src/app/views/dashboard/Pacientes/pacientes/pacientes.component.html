@@ -1,4 +1,4 @@
-<h1>TODOS LOS PACIENTES</h1>
+<h1>Listado de Pacientes</h1>
 
 <button mat-raised-button color="primary" type="button" (click)="consultarPacientes()" class="btn primary">
  Mostrar Pacientes
@@ -12,7 +12,7 @@
  <!-- Columna de posición -->
   <ng-container matColumnDef="position">
     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
-      No.
+      Id Paciente
     </th>
     <td mat-cell *matCellDef="let element"> {{element.IdPaciente}} </td>
   </ng-container>
@@ -43,6 +43,14 @@
     <td mat-cell *matCellDef="let element"> {{element.Num_Cel}} </td>
   </ng-container>
 
+ Email Column -
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by email">
+  Email
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.Email}} </td>
+  </ng-container>
+
 Dirección Column -
   <ng-container matColumnDef="Dirección">
     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Direccion">
@@ -59,7 +67,7 @@ Dirección Column -
     <td mat-cell *matCellDef="let element"> {{element.acciones}}
 
       <mat-icon type="button" (click)="eliminarPacientePorId(element)" > delete </mat-icon>
-      <mat-icon (click)="editarPaciente(element)" > edit </mat-icon>
+      <mat-icon type="button" (click)="editarPaciente(element)" > edit </mat-icon>
   </td>
   </ng-container>
 
