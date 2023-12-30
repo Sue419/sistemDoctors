@@ -6,6 +6,7 @@ import { environment } from "src/environments/environment";
 import { DataUserEdit } from '../../interfaces/interfaces';
 import { of } from 'rxjs'; // Asegúrate de importar 'of' de 'rxjs'
 import { Paciente } from '../../views/dashboard/Pacientes/pacientes/pacientes.component';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -36,15 +37,42 @@ export class PacientesService {
     //   return this.httpClient.patch<any>(environment.BASE_URL_BACK + environment.URL_ENDPOINT_PACIENTES+`${userData.id}`, userData,{headers});
     // }
 
+    // Interceptors
+
+    //MIOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+    // editarPaciente(paciente: any): Observable<any> {
+    //   const headers = new HttpHeaders({
+    //     'accept': 'application/json',
+    //   })
+    //   const body = {
+    //     tipDocum: paciente.IdTipoDocumento,
+    //     codDocum: paciente.NumeroDocumento
+    //   };
+    //   console.log("PACIENTE: ",paciente);
+      
+    //   return this.httpClient.patch<any>(environment.BASE_URL_BACK + environment.URL_ENDPOINT_PACIENTES+`/${paciente.id}`, body,{headers});
+      
+    // }
+
     editarPaciente(paciente: any): Observable<any> {
       const headers = new HttpHeaders({
         'accept': 'application/json',
       })
       const body = {
-        tipDocum: paciente.IdTipoDocumento,
-        codDocum: paciente.NumeroDocumento
+        IdPaciente: paciente.id,
+        paciente: paciente.NombrePaciente,
+        NumeroDocumento: paciente.dni,
+        Num_Cel: paciente.Telefono,
+        Domicilio: paciente.Direccion,
+        Email: paciente.Email,
       };
-      return this.httpClient.patch<any>(environment.BASE_URL_BACK + environment.URL_ENDPOINT_PACIENTES+`${paciente.id}`, body,{headers});
+
+      console.log("BODY 70: ", body );
+      
+      console.log("PACIENTE: ",paciente);
+      
+      return this.httpClient.patch<any>(environment.BASE_URL_BACK + environment.URL_ENDPOINT_PACIENTES+`/${paciente.id}`, body,{headers});
+      
     }
   
     eliminarPaciente(paciente: any): Observable<any> {
@@ -59,8 +87,6 @@ export class PacientesService {
         return of(null);
       }  
     }
-
-
 
 
 

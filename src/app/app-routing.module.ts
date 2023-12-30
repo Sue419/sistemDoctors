@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './views/login/login.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { PacientesComponent } from './views/dashboard/Pacientes/pacientes/pacientes.component';
-import { CreaPacienteComponent } from './views/dashboard/creaPaciente/crea-paciente/crea-paciente.component';
+import { CreaPacienteComponent } from './views/dashboard/crea-paciente/crea-paciente.component';
 import { NuevoHistorialComponent } from './views/dashboard/NuevoHistorial/nuevo-historial/nuevo-historial.component';
 import { HistorialComponent } from './views/dashboard/Historial/historial/historial.component';
 import HomeAdminComponent from './views/home-admin/home-admin.component';

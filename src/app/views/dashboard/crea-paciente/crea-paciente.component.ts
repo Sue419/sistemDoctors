@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms'
-import { PacientesService } from '../../../../services/pacientes/pacientes.service';
+import { PacientesService } from '../../../services/pacientes/pacientes.service';
 
 
 

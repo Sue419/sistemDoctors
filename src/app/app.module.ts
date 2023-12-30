@@ -36,13 +36,16 @@ import { sharedModule } from './shared/shadedModule';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
 import { SideNavComponent } from './views/dashboard/side-nav/side-nav.component';
-import { CreaPacienteComponent } from './views/dashboard/creaPaciente/crea-paciente/crea-paciente.component';
+import { CreaPacienteComponent } from './views/dashboard/crea-paciente/crea-paciente.component';
 import { DatosPacienteComponent } from './views/dashboard/datosPaciente/datos-paciente/datos-paciente.component';
 import { PacientesComponent } from './views/dashboard/Pacientes/pacientes/pacientes.component';
 import { NuevoHistorialComponent } from './views/dashboard/NuevoHistorial/nuevo-historial/nuevo-historial.component';
 import { HistorialComponent } from './views/dashboard/Historial/historial/historial.component';
 import { DoctoresComponent } from './views/dashboard/doctores/doctores.component';
 import { MatNativeDateModule } from '@angular/material/core';
+
+
+import { DashboardModule } from './views/dashboard/dashboard.module';
 
 
 
@@ -59,6 +62,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     NuevoHistorialComponent,
     HistorialComponent,
     DoctoresComponent,
+  
 
   ],
   imports: [
@@ -95,6 +99,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatGridListModule,
     MatFormFieldModule,
     MatDialogModule,
+  DashboardModule, 
+
   ],
   providers: [],
   bootstrap: [AppComponent],
