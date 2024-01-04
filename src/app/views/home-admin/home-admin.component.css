@@ -1,94 +1,29 @@
-/* Estilos para los títulos h1 y h2 */
-.portada-container {
-  padding: 0 20px 0 20px;
-  background: red;  
+.row{
+  padding-bottom: 65px;
+}
+.img-container{
+  display: flex;
+  justify-content: flex-end;
+  & img{
+    height: 40vh;    
+  }
 }
 
-.imagen-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: orange;
+.description-container{
   height: 100%;
-} 
-
-.imagen-container>img {
-  background-color: black;
-  width: auto;
-  height: 100%;
-
-}
-.container-title {
-  display: flex;
+  display: flex;  
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   color: black;
-  padding: 20px;
-  background-color: aqua;
-}
-
-
-.container-title h1 {
-  font-size: 2em;
-  margin-bottom: 10px;
-  background-color: lime;
-}
-
-.container-title h2 {
-  font-size: 1.2em;
-  margin-bottom: 20px;
-  background-color: yellow;
-}
-
-.container-title img {
-  width: 100%;
-  /* Asegura que la imagen ocupe el 100% del contenedor */
-  max-width: 100%;
-  /* Establece un límite máximo para el ancho de la imagen */
-  height: auto;
-  /* Hace que la altura se ajuste proporcionalmente al ancho */
-}
-
-/* Ajuste para pantallas más pequeñas */
-@media screen and (max-width: 768px) {
-  .container-title {
-    padding: 10px;
+  padding: 0px;
+  & h1{
+    font-size: 2em;
+    margin-bottom: 10px;
   }
-}
-
-@media screen and (max-width: 576px) {
-  .container-title {
-    padding: 5px;
+  & h2{
+    font-size: 1.2em;
+    margin-bottom: 20px;
   }
-
-  .container-title img {
-    display: none;
-    /* Oculta la imagen en pantallas más pequeñas */
-  }
-}
-
-
-
-
-/* .imagen-container img {
-  /* width: 100%;
-  height: auto; */
-
-
-.container-title {
-  max-width: 60%;
-  /* El contenedor del título ocupa el 60% del contenedor */
-  text-align: center;
-  /* Centra el texto */
-}
-
-.titulo-h1 {
-  font-size: 2em;
-}
-
-.titulo-h2 {
-  font-size: 1.5em;
 }
 
 .servicios-container {
@@ -99,30 +34,42 @@
   align-items: center;
 }
 
-.servicio-card {
-  width: 300px;
-  margin: 15px;
-}
-
 /* Ajustes adicionales para personalizar las cards de Angular Material */
 mat-card {
+  width: 300px;
+  margin: 15px;  
   border-radius: 10px;
   overflow: hidden;
   transition: transform 0.3s;
+  &:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+  & img{
+    height: 180px;
+  }
+  & mat-card-header,
+  mat-card-content{
+    text-align: center;
+  }  
 }
 
-mat-card:hover {
-  transform: scale(1.05);
-}
+/* Responsive design */
+@media (max-width: 575.98px) { }
 
-mat-card-header,
-mat-card-content {
-  text-align: center;
-}
-
-/* Ajustes para pantallas más pequeñas */
-@media screen and (max-width: 600px) {
-  .servicio-card {
-    width: 80%;
+@media (max-width: 767.98px) {
+  .description-container{
+    
+    align-items: center;
+    padding: 20px 15px
+  }
+  .img-container{
+    justify-content: center;
   }
 }
+
+@media (max-width: 991.98px) { }
+
+@media (max-width: 1199.98px) { }
+
+@media (max-width: 1399.98px) { }
