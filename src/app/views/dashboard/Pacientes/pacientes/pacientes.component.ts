@@ -9,16 +9,17 @@ import Swal from 'sweetalert2';
 import { DataUserEdit } from 'src/app/interfaces/interfaces';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { EditModalComponent } from '../../edit-modal/edit-modal.component';
-
+import { MatPaginator } from '@angular/material/paginator';
 
 
 // INTERFACE PARA EL TABLE-HEAD
 export interface Paciente {
-  id: number,
+  id?: number,
   position: number;
   nombrePaciente: string;
   dni: number;
   telefono: string;
+  fechaNacimiento: Date;
   email: string;
   Direccion: string;
   acciones: string;
@@ -32,14 +33,14 @@ export interface Paciente {
 })
 export class PacientesComponent implements AfterViewInit, OnInit {
 
-  displayedColumns: string[] = ['position', 'nombrePaciente', 'dni', 'telefono','email', 'Dirección', 'acciones'];
-  dataSource = new MatTableDataSource<Paciente>();
+  displayedColumns: string[] = ['nombrePaciente', 'dni', 'telefono', 'fechaNacimiento', 'email', 'Dirección', 'acciones'];
+  dataSource: MatTableDataSource<Paciente>;
 
   showModalEdit: boolean = false;
   paciente!: Paciente;
 
   @ViewChild(MatSort) sort!: MatSort;
-
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
 // F O R M  R E A C T I V O
   //form: todos los input que recolectan la Data
@@ -55,16 +56,21 @@ export class PacientesComponent implements AfterViewInit, OnInit {
   constructor(
     private _liveAnnouncer: LiveAnnouncer,
     private pacientesService: PacientesService,
-    private dialog: MatDialog
-  ) { }
+    private dialog: MatDialog,
+
+  ) { 
+    this.dataSource = new MatTableDataSource<Paciente>([]);
+  }
 
   ngOnInit(): void {
     this.consultarPacientes();
   }
   ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-  }
-
+      this.dataSource.paginator = this.paginator;
+      // this.dataSource.paginator.initialized. = "Items por página";
+      this.dataSource.sort = this.sort;
+    }
+  
   announceSortChange(sortState: Sort): void {
     const direction = sortState.direction ? `${sortState.direction}ending` : 'cleared';
     this._liveAnnouncer.announce(`Sorted ${direction}`);
@@ -116,33 +122,6 @@ export class PacientesComponent implements AfterViewInit, OnInit {
     // this.form.reset();
   }
 
-  // editPaciente(): void {
-  //   const paciente: DataUserEdit = {
-  //     id: Number(this.form.value.id) ,
-  //     NombrePaciente: this.form.value.NombrePaciente || '',
-  //     dni: Number(this.form.value.dni) ,
-  //     Telefono: this.form.value.Telefono || '',
-  //     Direccion: this.form.value.Direccion || '',
-  
-      
-  //     }
-  //   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   eliminarPacientePorId(paciente: any) {
     console.log(paciente, "paciente");
   
@@ -187,20 +166,6 @@ export class PacientesComponent implements AfterViewInit, OnInit {
     }
   }
   
-       
-
-    // if(paciente){
-    //     this.pacientesService.eliminarPaciente(paciente).subscribe(res =>{
-    //       if(res){
-    //         console.log("paciente eliminado correctamente", paciente);
-    //         this.consultarPacientes();
-    //       }
-    //     })
-    // }else{
-    //   console.log("Error al elminiar paciente");
-    // }
-
-
 private swalSuccess() {
   Swal.fire({
     title: "Deleted!",

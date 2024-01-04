@@ -5,43 +5,57 @@
 <!-- <mat-sidenav> -->
   <mat-nav-list>
 
-    <div class="navbar__logo">
+    <!-- <div class="navbar__logo">
       <img class="sidebar__logo--img" src="../../../../assets/logos/snake-removebg-preview.png" alt="imagen de usuario">
-    </div>
+    </div> -->
 
     <a mat-list-item routerLink="/dashboard/doctores">
-      <mat-icon >medication</mat-icon>
-      <span>Doctores</span>
+      <div class="d-flex align-items-center">
+        <mat-icon >medication</mat-icon>
+        <span class="ms-2">Doctores</span>
+      </div>
     </a>
 
     <a mat-list-item routerLink="/dashboard/pacientes">
-      <mat-icon>account_circle</mat-icon>
-      <span>Pacientes</span>
+      <div class="d-flex align-items-center">
+        <mat-icon>account_circle</mat-icon>
+        <span class="ms-2">Pacientes</span>
+      </div>
     </a>
 
     <a mat-list-item routerLink="/dashboard/datos-del-paciente">
-      <mat-icon>personal_injury</mat-icon>
-      <span>Datos del Paciente</span>
+      <div class="d-flex align-items-center">
+        <mat-icon>personal_injury</mat-icon>
+        <span class="ms-2">Datos del Paciente</span>
+      </div>
     </a>
 
     <a mat-list-item routerLink="/dashboard/crear-paciente">
-      <mat-icon>person_add</mat-icon>
-      <span>Registrar Paciente</span>
+      <div class="d-flex align-items-center">
+        <mat-icon>person_add</mat-icon>
+        <span class="ms-2">Registrar Paciente</span>
+      </div>
     </a>
 
     <a mat-list-item routerLink="/dashboard/nuevo-historial">
-      <mat-icon>library_add</mat-icon>
-      <span>Nuevo Historial</span>
+      <div class="d-flex align-items-center">
+        <mat-icon>library_add</mat-icon>
+        <span class="ms-2">Nuevo Historial</span>
+      </div>
     </a>
 
     <a mat-list-item routerLink="/dashboard/historial">
-      <mat-icon>library_books</mat-icon>
-      <span>Historial</span>
+      <div class="d-flex align-items-center">      
+        <mat-icon>library_books</mat-icon>
+        <span class="ms-2">Historial</span>
+      </div>
     </a>
 
     <a mat-list-item routerLink="/home">
-      <mat-icon>logout</mat-icon>
-      <span>Salir</span>
+      <div class="d-flex align-items-center">
+        <mat-icon>logout</mat-icon>
+        <span class="ms-2">Salir</span>
+      </div>
     </a>
 
   </mat-nav-list>

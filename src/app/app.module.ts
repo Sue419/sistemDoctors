@@ -13,7 +13,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
+
 import { MatSortModule } from '@angular/material/sort';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatStepperModule } from '@angular/material/stepper';
@@ -102,7 +103,7 @@ import { DashboardModule } from './views/dashboard/dashboard.module';
   DashboardModule, 
 
   ],
-  providers: [],
+  providers: [{provide: MatPaginatorIntl}],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
