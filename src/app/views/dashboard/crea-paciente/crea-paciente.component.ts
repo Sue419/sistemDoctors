@@ -20,10 +20,8 @@ Validators.required,
 Validators.minLength(5),
 Validators.maxLength(60),
 ]],
-appointment: [new Date(), Validators.required],
-
-category: ['BEGINNER', Validators.required],
-genderType: ['Femenino', Validators.required],
+appointment: [new Date()],
+genderType: [''],
 edad:[],
 symptoms: ['', [Validators.required, Validators.minLength(3)]],
 signs: ['', [Validators.required, Validators.minLength(3)]],
@@ -100,9 +98,9 @@ get nombrePaciente(){
   return this.form.controls['paciente'];
 }
 
-get tipoGenero() {
-  return this.form.controls['genderType']; // Cambiado de 'gender-type' a 'genderType'
-}
+// get tipoGenero() {
+//   return this.form.controls['genderType']; // Cambiado de 'gender-type' a 'genderType'
+// }
 
 
   onCancelClick() {
@@ -110,8 +108,7 @@ get tipoGenero() {
     this.form.reset({
       paciente: '',
       appointment: new Date(),
-      category: 'BEGINNER',
-      genderType: 'Femenino',
+      genderType: '',
       // ... (resto de valores iniciales)
     });
 

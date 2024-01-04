@@ -5,119 +5,84 @@
 </button>
 
 <!-- La tabla se muestra ordenada gracias al ng-container -->
+<mat-card>
+  <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+  class="mat-elevation-z8">
 
-<table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
-       class="mat-elevation-z8">
+<!-- Columna de posición -->
+<!-- <ng-container matColumnDef="position">
+<th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
+ Id Paciente
+</th>
+<td mat-cell *matCellDef="let element"> {{element.IdPaciente}} </td>
+</ng-container> -->
 
- <!-- Columna de posición -->
-  <ng-container matColumnDef="position">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
-      Id Paciente
-    </th>
-    <td mat-cell *matCellDef="let element"> {{element.IdPaciente}} </td>
-  </ng-container>
+<!-- Columna de nombre del paciente -->
 
-  <!-- Columna de nombre del paciente -->
-
-  <ng-container matColumnDef="nombrePaciente">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by NombrePaciente">
-      Nombre del Paciente
-    </th>
-    <td mat-cell *matCellDef="let element"> {{element.paciente}}</td>
-  </ng-container>
+<ng-container matColumnDef="nombrePaciente">
+<th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by NombrePaciente">
+ Nombre del Paciente
+</th>
+<td mat-cell *matCellDef="let element"> {{element.paciente}}</td>
+</ng-container>
 
 
-  DNI Column -
-  <ng-container matColumnDef="dni">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by dni">
-      DNI
-    </th>
-    <td mat-cell *matCellDef="let element"> {{element.NumeroDocumento}} </td>
-  </ng-container>
+DNI Column -
+<ng-container matColumnDef="dni">
+<th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by dni">
+ DNI
+</th>
+<td mat-cell *matCellDef="let element"> {{element.NumeroDocumento}} </td>
+</ng-container>
 
-  Telefono Column -
-  <ng-container matColumnDef="telefono">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by telefono">
-  Teléfono
-    </th>
-    <td mat-cell *matCellDef="let element"> {{element.Num_Cel}} </td>
-  </ng-container>
+Telefono Column -
+<ng-container matColumnDef="telefono">
+<th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by telefono">
+Teléfono
+</th>
+<td mat-cell *matCellDef="let element"> {{element.Num_Cel}} </td>
+</ng-container>
 
- Email Column -
-  <ng-container matColumnDef="email">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by email">
-  Email
-    </th>
-    <td mat-cell *matCellDef="let element"> {{element.Email}} </td>
-  </ng-container>
+FechNac Column -
+<ng-container matColumnDef="fechaNacimiento">
+<th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by fechaNacimiento">
+Fecha Nacimiento
+</th>
+<td mat-cell *matCellDef="let element"> {{element.FNac }} </td>
+</ng-container>
+<!-- {{element.FNac | date: 'dd/MM/yyyy' }} -->
+Email Column -
+<ng-container matColumnDef="email">
+<th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by email">
+Email
+</th>
+<td mat-cell *matCellDef="let element"> {{element.Email}} </td>
+</ng-container>
 
 Dirección Column -
-  <ng-container matColumnDef="Dirección">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Direccion">
-     Dirección
-    </th>
-    <td mat-cell *matCellDef="let element"> {{element.Domicilio}} </td>
-  </ng-container>
+<ng-container matColumnDef="Dirección">
+<th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Direccion">
+Dirección
+</th>
+<td mat-cell *matCellDef="let element"> {{element.Domicilio}} </td>
+</ng-container>
 
- Acciones Column -
-  <ng-container matColumnDef="acciones">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by acciones">
-     Acciones
-    </th>
-    <td mat-cell *matCellDef="let element"> {{element.acciones}}
+Acciones Column -
+<ng-container matColumnDef="acciones">
+<th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by acciones">
+Acciones
+</th>
+<td mat-cell *matCellDef="let element"> {{element.acciones}}
 
-      <mat-icon type="button" (click)="eliminarPacientePorId(element)" > delete </mat-icon>
-      <mat-icon type="button" (click)="editarPaciente(element)" > edit </mat-icon>
-  </td>
-  </ng-container>
+ <mat-icon type="button" (click)="eliminarPacientePorId(element)" > delete </mat-icon>
+ <mat-icon type="button" (click)="editarPaciente(element)" > edit </mat-icon>
+</td>
+</ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table> 
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+</mat-card>
 
-<!-- ********************************************************* -->
-
-<!-- <-- M O D A L  E D I T A R  P R O D U C T O -->
-<!-- <div class="modal" *ngIf="showModalEdit">
-  <div class="modal-content">
-    <span class="close" (click)="closeModal()">&times;</span>
-    <form class="form" [formGroup]="form" (ngSubmit)="editarPaciente(paciente.id)">
-
-      <h1 class="title">Editar Paciente</h1>
-      <div class="inputContainer">
-
-        <input class="input" type="text" id="id" formControlName="id" name="id_paciente" placeholder=""
-          title="" placeholder="" required>
-        
-          <label for="" class="label">Id</label>
-
-      </div>
-
-      <div class="inputContainer">
-        <input class="input" type="text" formControlName="NombrePaciente" id="NombrePaciente" name="nombre_paciente"
-          placeholder="Ex. Luisa Gomez" required>
-        <label for="" class="label">Nombre del Paciente</label>
-      </div>
-
-      <div class="inputContainer">
-        <input class="input" type="tex" formControlName="dni" name="dni" id="dni" required>
-        <label for="" class="label">Número de Documento</label>
-      </div>
-
-      <div class="inputContainer">
-        <input class="input" type="text" formControlName="telefono" id="telefono" name="telefono" placeholder="Ex. 999 999 999" required>
-        <label for="" class="label">Teléfono</label>
-      </div>
-
-      <div class="inputContainer">
-        <input class="input" type="text" formControlName="Direccion" id="Direccion" name="Direccion" placeholder="Ex... Maz A Lte" required>
-        <label for="" class="label">Dirección</label>
-      </div>
-
-
-      <button class="addeMployee">Cancelar</button>
-      <button class="addeMployee" (click)="openModalEditUser">Editar Paciente</button>
-    </form>
-  </div>
-</div> -->
 

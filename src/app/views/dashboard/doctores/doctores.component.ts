@@ -130,22 +130,15 @@ export class DoctoresComponent implements AfterViewInit, OnInit {
   eliminarMedicoPorId(medico:any){
     console.log(medico, "DOCTOR");
     if(medico){
-      const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-          confirmButton: "btn btn-success",
-          cancelButton: "btn btn-danger"
-        },
-        buttonsStyling: false
-      });
-  
-      swalWithBootstrapButtons.fire({
+      Swal.fire({
         title: "Estás seguro?",
         text: "No podrás revertir esto!",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonText: "SI, Bórralo!",
-        cancelButtonText: "NO, Cancel!",
-        reverseButtons: true
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "SI, Bórralo!"
+
       }).then((result: any) => {
         if (result.isConfirmed) {
           this.medicosService.eliminarMedico(medico).subscribe({
@@ -174,8 +167,8 @@ export class DoctoresComponent implements AfterViewInit, OnInit {
   }
   private swalSuccess() {
     Swal.fire({
-      title: "Deleted!",
-      text: "Your file has been deleted.",
+      title: "Borrado!",
+      text: "Tu archivo fue borrado.",
       icon: "success"
     });
   }
