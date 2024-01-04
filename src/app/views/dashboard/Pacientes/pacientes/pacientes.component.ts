@@ -14,7 +14,7 @@ import { MatPaginator } from '@angular/material/paginator';
 
 // INTERFACE PARA EL TABLE-HEAD
 export interface Paciente {
-  id?: number,
+  id: number,
   position: number;
   nombrePaciente: string;
   dni: number;
@@ -99,38 +99,28 @@ export class PacientesComponent implements AfterViewInit, OnInit {
     });
   }
 
-  editarPaciente(paciente: any) {
-    console.log(paciente, "paciente")
+ openModalToEditPaciente(paciente: any) {
+    console.log(paciente, "paciente EDITAR PACIENTES.COMPONENT")
     const dialogRef = this.dialog.open(EditModalComponent, {
       width: '900px',
       data: { paciente }
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {
-      if (result) {
-        this.pacientesService.editarPaciente(paciente).subscribe({
-          next: (data: any) => {
-            console.log(data);
-            console.log(`Paciente ${paciente.id} editado correctamente`);
-            this.consultarPacientes();
-
-          },
-          error: (error) => {
-            console.log(`Error al editar el paciente ${paciente.id}: $error}`);
-          }
-        });
-      }
-    });
+      this.consultarPacientes();
+      
+            console.log(`Paciente ${result.paciente.IdPaciente} editado correctamente 11555`);
+          // this.closeModal();
+          
+          })
   }
 
   openModalEditUser() {
     this.showModalEdit = true;
   }
-  closeModal() {
- 
-    this.showModalEdit = false;
-    // this.form.reset();
-  }
+  // closeModal() {
+  //   this.showModalEdit = false;
+  // }
 
   eliminarPacientePorId(paciente: any) {
     console.log(paciente, "paciente");

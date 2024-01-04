@@ -26,12 +26,7 @@ color: #B03048;
 }
 
   /* ************************* */
-  /* * {
-    color: var(--color-2);
-    font-style: italic;
-    font-family: var(--font-family-1);
-  } */
-  
+
   .adminName {
     margin-bottom: 7px;
     font-size: 22px;
@@ -118,9 +113,6 @@ color: #B03048;
     color: var(--color-6);
     font-size: 20px;
     font-style: italic;
-    /* text-align: center; */
-    /* align-self: center; */
-    /* text-shadow: 2px 2px var(--color-2); */
   }
   
   .btnDelete {
@@ -140,15 +132,14 @@ color: #B03048;
   }
   
   .btnAddProducts {
-    /* background: blue; */
-    /* max-width: 100%; */
+
     display: flex;
     justify-content: center;
     align-items: center;
   }
   
   .addProducts {
-    /* float: right; */
+
     background-color: var(--color-3);
     letter-spacing: 1.5px;
     width: 80%;

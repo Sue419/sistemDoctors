@@ -1,9 +1,3 @@
-<!-- <h1>Listado de Pacientes</h1>
-
-<button mat-raised-button color="primary" type="button" (click)="consultarPacientes()" class="btn primary">
- Mostrar Pacientes
-</button> -->
-
 
 <!-- La tabla se muestra ordenada gracias al ng-container -->
 <mat-card>
@@ -14,16 +8,6 @@
   </mat-form-field>
 
   <table matSort  mat-table [dataSource]="dataSource" (matSortChange)="announceSortChange($event)" class="mat-elevation-z15">
-
-<!-- Columna de posición -->
-<!-- <ng-container matColumnDef="position">
-<th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
- Id Paciente
-</th>
-<td mat-cell *matCellDef="let element"> {{element.IdPaciente}} </td>
-</ng-container> -->
-
-<!-- Columna de nombre del paciente -->
 
 <ng-container matColumnDef="nombrePaciente">
 <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by NombrePaciente">
@@ -80,8 +64,8 @@ Acciones
 </th>
 <td mat-cell *matCellDef="let element"> {{element.acciones}}
 
- <mat-icon type="button" class="btn__edit" (click)="eliminarPacientePorId(element)" > delete </mat-icon>
- <mat-icon type="button" class="btn__delete" (click)="editarPaciente(element)" > edit </mat-icon>
+ <mat-icon type="button" class="btn__edit ms-2 " (click)="eliminarPacientePorId(element)" > delete </mat-icon>
+ <mat-icon type="button" class="btn__delete ms-2 " (click)="openModalToEditPaciente(element)" > edit </mat-icon>
 </td>
 </ng-container>
 

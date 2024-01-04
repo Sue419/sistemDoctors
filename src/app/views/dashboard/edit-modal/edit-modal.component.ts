@@ -5,6 +5,7 @@ import { DialogData } from 'src/app/interfaces/interfaces';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import Swal from 'sweetalert2'
 
+
 @Component({
   selector: 'app-edit-modal',
   templateUrl: './edit-modal.component.html',
@@ -20,7 +21,7 @@ export class EditModalComponent implements OnInit {
     private formBuilder: FormBuilder,
   ) {}
   ngOnInit(): void {
-    console.log("data: ", this.data);
+    console.log("data NGONINIT: ", this.data);
     
     this.formulario2 = this.formBuilder.group({
       id: [this.data.paciente.IdPaciente, Validators.required],
@@ -33,43 +34,29 @@ export class EditModalComponent implements OnInit {
   }
 
 
-// editarPaciente(paciente: any): void {
-//   this.pacientesService.editarPaciente(this.data.paciente).subscribe({
-//     next: (data: any) => {
-//       console.log(data);
-//       console.log(`Paciente ${this.data.paciente.id} editado correctamente`);
-//       this.dialogRef.close();
-//     },
-//     error: (error) => {
-//       console.log(`Error al editar el paciente ${this.data.paciente.id}: ${error}`);
-//     }
-//   });
-// }
-
-// form = new FormGroup({
- 
-//   id: new FormControl(this.data.paciente.id),
-//   NombrePaciente: new FormControl(this.data.paciente.NombrePaciente),
-//   dni: new FormControl(this.data.paciente.dni),
-//   Telefono: new FormControl(this.data.paciente.Telefono),
-//   Email: new FormControl(this.data.paciente.Email),
-//   Direccion: new FormControl(this.data.paciente.Direccion),
-// });
-
-// x si truena llega en el ngOnINI... 48 A LA 53 Y ME LLLEVO AL NG ONinit
 
 editarPaciente() {
   console.log("paciente: ", this.formulario2.value )
-
+  console.log(" EDITAR EDITMODALCOMPONENT")
   this.pacientesService.editarPaciente(this.formulario2.value).subscribe({
     next: (data: any) => {
       console.log(data);
-      // console.log(`Paciente ${paciente.id} editado correctamente`);
-      // this.consultarPacientes();
+      this.onClick();
+      console.log(`Paciente ${this.formulario2.value.id} editado correctamente`);
+      this.pacientesService.getAllPacientes().subscribe({
+        next: (datos:any)=>{
+        console.log(datos, "datos");
+        
+      },
+       error: (error) => {
+        console.log(error);
+      }
+      
+    });
 
-    },
+  },
     error: (error) => {
-      // console.log(`Error al editar el paciente ${paciente.IdPaciente}: ${error}`);
+      console.log(`Error al editar el paciente ${this.formulario2.value.id}: ${error}`);
     }
   });
 
