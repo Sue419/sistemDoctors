@@ -70,6 +70,16 @@ export class PacientesComponent implements AfterViewInit, OnInit {
       // this.dataSource.paginator.initialized. = "Items por página";
       this.dataSource.sort = this.sort;
     }
+
+    applyFilter(event: Event) {
+      const filterValue = (event.target as HTMLInputElement).value;
+      this.dataSource.filter = filterValue.trim().toLowerCase();
+  
+      if (this.dataSource.paginator) {
+        this.dataSource.paginator.firstPage();
+      }
+    }
+  
   
   announceSortChange(sortState: Sort): void {
     const direction = sortState.direction ? `${sortState.direction}ending` : 'cleared';
