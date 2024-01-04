@@ -2,9 +2,28 @@ table {
     width: 100%;
   }
   
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
+
   th.mat-sort-header-sorted {
     color: black;
   }
+
+  .btn__edit, .btn__delete{
+cursor:pointer;
+  }
+  .btn__edit{
+    color: #376DCD;
+  }
+.btn__delete{
+color: #B03048;
+}
 
   /* ************************* */
   /* * {
