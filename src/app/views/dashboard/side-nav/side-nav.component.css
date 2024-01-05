@@ -51,7 +51,7 @@
   background-color: #93b0d8;
 }
 
-.container{
+.main_container{
   background-color: #93b0d8;
   display: flex;
   grid-template-columns: 300px 1fr;
