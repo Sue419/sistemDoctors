@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatSort, Sort } from '@angular/material/sort';
+// import { MatSort, Sort } from '@angular/material/sort';
+import {MatSort, MatSortModule} from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { PacientesService } from 'src/app/services/pacientes/pacientes.service';
@@ -10,6 +11,7 @@ import { DataUserEdit } from 'src/app/interfaces/interfaces';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { EditModalComponent } from '../../edit-modal/edit-modal.component';
 import { MatPaginator } from '@angular/material/paginator';
+// import { setTimeout } from 'timers/promises';
 
 
 // INTERFACE PARA EL TABLE-HEAD
@@ -39,7 +41,8 @@ export class PacientesComponent implements AfterViewInit, OnInit {
   showModalEdit: boolean = false;
   paciente!: Paciente;
 
-  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatSort) sort2!: MatSort;
+  // @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
 // F O R M  R E A C T I V O
@@ -63,12 +66,17 @@ export class PacientesComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit(): void {
+    // this.dataSource.sort = this.sort;
     this.consultarPacientes();
+    setTimeout(() => {
+      this.dataSource.sort = this.sort2;
+    }, 2000);
   }
   ngAfterViewInit() {
       this.dataSource.paginator = this.paginator;
       // this.dataSource.paginator.initialized. = "Items por página";
-      this.dataSource.sort = this.sort;
+      // this.dataSource.sort = this.sort;
+
     }
 
     applyFilter(event: Event) {
@@ -79,13 +87,6 @@ export class PacientesComponent implements AfterViewInit, OnInit {
         this.dataSource.paginator.firstPage();
       }
     }
-  
-  
-  announceSortChange(sortState: Sort): void {
-    const direction = sortState.direction ? `${sortState.direction}ending` : 'cleared';
-    this._liveAnnouncer.announce(`Sorted ${direction}`);
-  }
-
 
   consultarPacientes() {
     this.pacientesService.getAllPacientes().subscribe({
@@ -128,8 +129,8 @@ export class PacientesComponent implements AfterViewInit, OnInit {
     if(paciente){
       const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
-          confirmButton: "btn btn-success",
-          cancelButton: "btn btn-danger"
+          confirmButton: "btn btn-success ms-2",
+          cancelButton: "btn btn-danger me-2"
         },
         buttonsStyling: false
       });
