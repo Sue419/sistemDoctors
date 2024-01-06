@@ -59,11 +59,13 @@
     font-size: 3em;
     margin-bottom: 10px;
     font-weight: 800;
+    color: #334085;
   }
   & h2 {
     font-size: 1.2em;
     margin-bottom: 20px;
     font-weight: 400;
+    color: #3f51b5;
   }
 }
 
