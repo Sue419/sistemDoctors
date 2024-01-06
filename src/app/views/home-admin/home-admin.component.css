@@ -1,8 +1,7 @@
 .container-fluid {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 0;
 }
 
 .welcome-section {
@@ -10,6 +9,11 @@
   flex: 1;
   background: url('../../../assets/fondos/fondo-medical.png') center/cover no-repeat;
   min-height: 100vh;
+}
+
+.img-container {
+  display: flex;
+  overflow: hidden;
 }
 
 .description-container {
@@ -22,6 +26,7 @@
 }
 
 .service-section {
+  min-height: 55vh;
   border-radius: 5px;
 }
 
@@ -37,9 +42,9 @@
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
-  overflow: hidden;
   & img {
     height: 80vh;
+    width: auto;
   }
 }
 
